@@ -1,1 +1,30 @@
+attach(Household_Pulse_data)
 
+Divisions <- lm(as.numeric(EEDUC ~ RECVDVACC*REGION)
+                summary(Divisions)
+                require(stargazer)
+                stargazer(Divisions, type = "text")
+                ####  Well fail to reject the Null Hypt becuae the P value is greater than the level of Siginaficance.  And the will
+                #### make no difference betweent he Ind and Dep Variables.
+                
+                Divisions_1 <- lm(as.numeric(RECVDVACC) ~ EEDUC * GENID_DESCRIBE)
+                summary(Divisions_1)
+                require(stargazer)
+                stargazer(Divisions_1, type = "text")
+                
+                ### GENDID_DESCRIBEmale or genders that are described as male fail to reject the Null Hypt because the P value is greater
+                #### than the level of significance. This means again there is no differnect between the ind and dep variables.
+                
+                
+                
+                
+                
+                
+                
+                Division_2 <- lm(as.numeric(INCOME) ~ ANYWORK)
+summary(Division_2)
+#### I reject the Null Hypt that there is no correclation between the ind and dep variable because there is a high level of signaficance which is indicated byt the Three stars 
+#### and a low P value.  The mean we must honor the alternative hypthesis that there is a correclation between anywork and income.  
+
+summary(CHILDFOOD)
+### The data is interesting becuae in todays age with much wealth there are still numerous children that are food instable.
