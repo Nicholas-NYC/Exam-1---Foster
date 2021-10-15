@@ -1,0 +1,222 @@
+attach(Household_Pulse_data)
+Error in attach(Household_Pulse_data) : 
+  object 'Household_Pulse_data' not found
+> Divisions <- lm(as.numeric(EEDUC ~ RECVDVACC*REGION)
++                 require(stargazer)
+Error: unexpected symbol in:
+"Divisions <- lm(as.numeric(EEDUC ~ RECVDVACC*REGION)
+                require"
+>                 stargazer(Divisions, type = "text")
+Error in .stargazer.wrap(..., type = type, title = title, style = style,  : 
+  object 'Divisions' not found
+>                 Divisions_1 <- lm(as.numeric(RECVDVACC) ~ EEDUC * GENID_DESCRIBE)
+>                 summary(Divisions_1)
+
+Call:
+lm(formula = as.numeric(RECVDVACC) ~ EEDUC * GENID_DESCRIBE)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.45455 -0.15471 -0.07999 -0.04340  1.50806 
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                2.07143    0.08802  23.533  < 2e-16 ***
+EEDUCsome hs                              -0.39143    0.10994  -3.560 0.000371 ***
+EEDUCHS diploma                           -0.42208    0.09194  -4.591 4.42e-06 ***
+EEDUCsome coll                            -0.39510    0.09095  -4.344 1.40e-05 ***
+EEDUCassoc deg                            -0.57949    0.09286  -6.241 4.38e-10 ***
+EEDUCbach deg                             -0.51030    0.08993  -5.674 1.40e-08 ***
+EEDUCadv deg                              -0.49157    0.09014  -5.454 4.95e-08 ***
+GENID_DESCRIBEmale                         0.11844    0.09184   1.290 0.197160    
+GENID_DESCRIBEfemale                       0.23249    0.09099   2.555 0.010619 *  
+GENID_DESCRIBEtransgender                  0.38312    0.13270   2.887 0.003889 ** 
+GENID_DESCRIBEother                        0.38690    0.11076   3.493 0.000478 ***
+EEDUCsome hs:GENID_DESCRIBEmale            0.47068    0.11428   4.119 3.81e-05 ***
+EEDUCHS diploma:GENID_DESCRIBEmale         0.44739    0.09580   4.670 3.01e-06 ***
+EEDUCsome coll:GENID_DESCRIBEmale          0.35893    0.09475   3.788 0.000152 ***
+EEDUCassoc deg:GENID_DESCRIBEmale          0.52039    0.09671   5.381 7.44e-08 ***
+EEDUCbach deg:GENID_DESCRIBEmale           0.38564    0.09374   4.114 3.90e-05 ***
+EEDUCadv deg:GENID_DESCRIBEmale            0.33904    0.09395   3.609 0.000308 ***
+EEDUCsome hs:GENID_DESCRIBEfemale          0.39444    0.11328   3.482 0.000498 ***
+EEDUCHS diploma:GENID_DESCRIBEfemale       0.31799    0.09490   3.351 0.000807 ***
+EEDUCsome coll:GENID_DESCRIBEfemale        0.25488    0.09389   2.715 0.006638 ** 
+EEDUCassoc deg:GENID_DESCRIBEfemale        0.43028    0.09580   4.492 7.08e-06 ***
+EEDUCbach deg:GENID_DESCRIBEfemale         0.28637    0.09289   3.083 0.002051 ** 
+EEDUCadv deg:GENID_DESCRIBEfemale          0.23105    0.09310   2.482 0.013076 *  
+EEDUCsome hs:GENID_DESCRIBEtransgender     0.07974    0.19350   0.412 0.680277    
+EEDUCHS diploma:GENID_DESCRIBEtransgender  0.18182    0.14895   1.221 0.222228    
+EEDUCsome coll:GENID_DESCRIBEtransgender   0.03489    0.14205   0.246 0.805962    
+EEDUCassoc deg:GENID_DESCRIBEtransgender   0.32495    0.16036   2.026 0.042730 *  
+EEDUCbach deg:GENID_DESCRIBEtransgender    0.07749    0.14250   0.544 0.586577    
+EEDUCadv deg:GENID_DESCRIBEtransgender     0.27512    0.14342   1.918 0.055075 .  
+EEDUCsome hs:GENID_DESCRIBEother           0.13310    0.14842   0.897 0.369872    
+EEDUCHS diploma:GENID_DESCRIBEother        0.21117    0.11870   1.779 0.075249 .  
+EEDUCsome coll:GENID_DESCRIBEother         0.03052    0.11606   0.263 0.792595    
+EEDUCassoc deg:GENID_DESCRIBEother         0.28208    0.11995   2.352 0.018698 *  
+EEDUCbach deg:GENID_DESCRIBEother          0.19052    0.11516   1.654 0.098040 .  
+EEDUCadv deg:GENID_DESCRIBEother           0.20585    0.11528   1.786 0.074159 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3293 on 69079 degrees of freedom
+Multiple R-squared:  0.07051,	Adjusted R-squared:  0.07006 
+F-statistic: 154.1 on 34 and 69079 DF,  p-value: < 2.2e-16
+
+>                 require(stargazer)
+>                 stargazer(Divisions_1, type = "text")
+
+=====================================================================
+                                              Dependent variable:    
+                                          ---------------------------
+                                             as.numeric(RECVDVACC)   
+---------------------------------------------------------------------
+EEDUCsome hs                                       -0.391***         
+                                                    (0.110)          
+                                                                     
+EEDUCHS diploma                                    -0.422***         
+                                                    (0.092)          
+                                                                     
+EEDUCsome coll                                     -0.395***         
+                                                    (0.091)          
+                                                                     
+EEDUCassoc deg                                     -0.579***         
+                                                    (0.093)          
+                                                                     
+EEDUCbach deg                                      -0.510***         
+                                                    (0.090)          
+                                                                     
+EEDUCadv deg                                       -0.492***         
+                                                    (0.090)          
+                                                                     
+GENID_DESCRIBEmale                                   0.118           
+                                                    (0.092)          
+                                                                     
+GENID_DESCRIBEfemale                                0.232**          
+                                                    (0.091)          
+                                                                     
+GENID_DESCRIBEtransgender                          0.383***          
+                                                    (0.133)          
+                                                                     
+GENID_DESCRIBEother                                0.387***          
+                                                    (0.111)          
+                                                                     
+EEDUCsome hs:GENID_DESCRIBEmale                    0.471***          
+                                                    (0.114)          
+                                                                     
+EEDUCHS diploma:GENID_DESCRIBEmale                 0.447***          
+                                                    (0.096)          
+                                                                     
+EEDUCsome coll:GENID_DESCRIBEmale                  0.359***          
+                                                    (0.095)          
+                                                                     
+EEDUCassoc deg:GENID_DESCRIBEmale                  0.520***          
+                                                    (0.097)          
+                                                                     
+EEDUCbach deg:GENID_DESCRIBEmale                   0.386***          
+                                                    (0.094)          
+                                                                     
+EEDUCadv deg:GENID_DESCRIBEmale                    0.339***          
+                                                    (0.094)          
+                                                                     
+EEDUCsome hs:GENID_DESCRIBEfemale                  0.394***          
+                                                    (0.113)          
+                                                                     
+EEDUCHS diploma:GENID_DESCRIBEfemale               0.318***          
+                                                    (0.095)          
+                                                                     
+EEDUCsome coll:GENID_DESCRIBEfemale                0.255***          
+                                                    (0.094)          
+                                                                     
+EEDUCassoc deg:GENID_DESCRIBEfemale                0.430***          
+                                                    (0.096)          
+                                                                     
+EEDUCbach deg:GENID_DESCRIBEfemale                 0.286***          
+                                                    (0.093)          
+                                                                     
+EEDUCadv deg:GENID_DESCRIBEfemale                   0.231**          
+                                                    (0.093)          
+                                                                     
+EEDUCsome hs:GENID_DESCRIBEtransgender               0.080           
+                                                    (0.194)          
+                                                                     
+EEDUCHS diploma:GENID_DESCRIBEtransgender            0.182           
+                                                    (0.149)          
+                                                                     
+EEDUCsome coll:GENID_DESCRIBEtransgender             0.035           
+                                                    (0.142)          
+                                                                     
+EEDUCassoc deg:GENID_DESCRIBEtransgender            0.325**          
+                                                    (0.160)          
+                                                                     
+EEDUCbach deg:GENID_DESCRIBEtransgender              0.077           
+                                                    (0.143)          
+                                                                     
+EEDUCadv deg:GENID_DESCRIBEtransgender              0.275*           
+                                                    (0.143)          
+                                                                     
+EEDUCsome hs:GENID_DESCRIBEother                     0.133           
+                                                    (0.148)          
+                                                                     
+EEDUCHS diploma:GENID_DESCRIBEother                 0.211*           
+                                                    (0.119)          
+                                                                     
+EEDUCsome coll:GENID_DESCRIBEother                   0.031           
+                                                    (0.116)          
+                                                                     
+EEDUCassoc deg:GENID_DESCRIBEother                  0.282**          
+                                                    (0.120)          
+                                                                     
+EEDUCbach deg:GENID_DESCRIBEother                   0.191*           
+                                                    (0.115)          
+                                                                     
+EEDUCadv deg:GENID_DESCRIBEother                    0.206*           
+                                                    (0.115)          
+                                                                     
+Constant                                           2.071***          
+                                                    (0.088)          
+                                                                     
+---------------------------------------------------------------------
+Observations                                        69,114           
+R2                                                   0.071           
+Adjusted R2                                          0.070           
+Residual Std. Error                           0.329 (df = 69079)     
+F Statistic                               154.132*** (df = 34; 69079)
+=====================================================================
+Note:                                     *p<0.1; **p<0.05; ***p<0.01
+>                 Division_2 <- lm(as.numeric(INCOME) ~ ANYWORK)
+>                 summary(Division_2)
+
+Call:
+lm(formula = as.numeric(INCOME) ~ ANYWORK)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3902 -2.3536 -0.2295  1.6464  6.7705 
+
+Coefficients:
+                                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                           1.22951    0.04969   24.75   <2e-16 ***
+ANYWORKyes employment in last 7 days  3.16066    0.05102   61.95   <2e-16 ***
+ANYWORKno employment in last 7 days   2.12411    0.05156   41.20   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 2.296 on 69111 degrees of freedom
+Multiple R-squared:  0.08283,	Adjusted R-squared:  0.0828 
+F-statistic:  3121 on 2 and 69111 DF,  p-value: < 2.2e-16
+
+>                 summary(CHILDFOOD)
+                                                 NA 
+                                              64258 
+often kids not eating enough because couldnt afford 
+                                                271 
+                   sometimes kids not eating enough 
+                                               1191 
+                               kids got enough food 
+                                               3394 
+> 
+>                 ### The data is interesting becuae in todays age with much wealth there are still numerous children that are food instable.
+>                 ### The data is interesting becuae in todays age with much wealth there are still numerous children that are food instable.
+>                 ### The data is interesting becuae in todays age with much wealth there are still numerous children that are food instable.
+> 
