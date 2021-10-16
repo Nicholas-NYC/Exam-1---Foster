@@ -7,25 +7,18 @@ Household_Pulse_data$REGION <- (as.numeric(Household_Pulse_data$REGION))
 Household_Pulse_data$GENID_DESCRIBE <- (as.numeric(Household_Pulse_data$GENID_DESCRIBE))
 Household_Pulse_data$FORCLOSE <- (as.numeric(Household_Pulse_data$FORCLOSE))
 Household_Pulse_data$RRACE <- (as.numeric(Household_Pulse_data$RRACE))
-Asains <- Household_Pulse_data$RRACE == 3
-
-### previous is already int. onsite and remote is int also, might need to change might not?
-Household_Pulse_data$Num_kids_Priv_School <- (as.numeric(Household_Pulse_data$Num_kids_Priv_School))
-
-### I want to look at the Asain Population in the North East in respect to sending their children to private school
-
-NE_Region <- subset(Household_Pulse_data, Household_Pulse_data$REGION == 1) 
-
-attach(NE_Region)
-
-Asains <- Household_Pulse_data$RRACE == 3
-
-model_temp1 <- lm(NE_Region$Asians ~ Num_kids_Priv_School)
-detach()
-require(stargazer)
-stargazer(model_temp1, type = "text")
 
 
-summary(NE_ASAIN1)
 
-MODEL1 <- lm()
+WhiteOUT <- Household_Pulse_data$RRACE == 1
+BlackOUT <- Household_Pulse_data$RRACE == 2
+AsainOUT <- Household_Pulse_data$RRACE == 3
+
+
+
+NO_House <- Household_Pulse_data$FORCLOSE == 4
+
+
+
+Regression_1 <- lm(NO_House ~ WhiteOUT + BlackOUT + AsainOUT)
+summary(Regression_1)
