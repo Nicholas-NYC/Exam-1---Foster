@@ -1,0 +1,16 @@
+xtabs(~ EEDUC + RECVDVACC + REGION)
+detach()
+library(stargazer)
+stargazer(lm(RECVDVACC ~ EEDUC + REGION), type = "text")
+
+lm(RECVDVACC ~ EEDUC + REGION == Northeast)
+
+data1 <- xtabs(~ EEDUC + RECVDVACC + REGION)
+View(data1)
+data2 <- Household_Pulse_data[,c("EEDUC","RECVDVACC","REGION")]
+View(data2)
+library(stringr)
+library(tidyr)
+data2$RECVDVACC %>% replace_na(as.factor('No'))
+
+lm(RECVDVACC ~ EEDUC + REGION)
