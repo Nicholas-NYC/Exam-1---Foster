@@ -7,6 +7,10 @@ Household_Pulse_data$EEDUC <- (as.numeric(Household_Pulse_data$EEDUC))
 Household_Pulse_data$RECVDVACC <- (as.numeric(Household_Pulse_data$RECVDVACC))
 Household_Pulse_data$REGION <- (as.numeric(Household_Pulse_data$REGION))
 Household_Pulse_data$GENID_DESCRIBE <- (as.numeric(Household_Pulse_data$GENID_DESCRIBE))
+Household_Pulse_data$MS <- (as.numeric(Household_Pulse_data$MS))
+Household_Pulse_data$RSNNOWRKRV <- (as.numeric(Household_Pulse_data$RSNNOWRKRV))
+Household_Pulse_data$CHLDCARE <- (as.numeric(Household_Pulse_data$CHLDCARE))
+Household_Pulse_data$HADCOVID <- (as.numeric(Household_Pulse_data$HADCOVID))
 
 #Question 3, In question number 3 I want to look at the information regarding a few racial subgroups and the likely 
 #hood of those subgroups being foreclosed on.  
@@ -36,9 +40,137 @@ NO_House <- Household_Pulse_data$FORCLOSE == 1
 #Subgroup to No_House to see if there is any Signaifcance and Difference
 Regression_1 <- lm(NO_House ~ WhiteOUT + BlackOUT + AsainOUT)
 summary(Regression_1)
-#Once the data is reviewed we can make a determination on any Difference and Significance.
-#  After looking at the determinations I have concluded that based on the P Values and the Estimates
+#  Once the data is reviewed we can make a determination on any Significance.
+#  After looking at the determinations I have concluded that based on the P Values and those values being less than
+#  the .01 level of Signigicance.
 #  I must reject the Null Hypothesis in favor of the alternative hypothesis.  I found with 99% confidance
-#  that the test was signigicant and we can also validate that using the signif.codes.  This means that 
-#  there is no difference between racial groups and the likely hood of people being forclosed on in the
-#  next two months.
+#  that the test was signigicant and we can also validate that using the signif.codes. This means that 
+#  there is a difference between the subgroups and the sample.
+library(car)
+Anova(Regression_1)
+
+#  When looking at my subgroup I found that there is no difference between them and the Sample.  
+#  This is true for a .01 level of significance, 
+#  if we choose to use a .001 level only then will the black subgroup show any signs of difference.  
+
+#  KNN
+NOT_Work <- Household_Pulse_data$RSNNOWRKRV == 2
+NOT_Work2 <- Household_Pulse_data$RSNNOWRKRV == 9
+NOT_Work3 <- Household_Pulse_data$RSNNOWRKRV == 11
+
+borough_f <- factor((NOT_Work + 2*NOT_Work2 + 3*NOT_Work3), levels=c(1,2,3),labels = c("COVID","Employer Closed","NO Transwork"))
+
+norm_varb <- function(X_in) {
+  (X_in - min(X_in, na.rm = TRUE))/( max(X_in, na.rm = TRUE) - min(X_in, na.rm = TRUE) )
+}
+
+
+Norm_Covid <- norm_varb(Household_Pulse_data$HADCOVID)
+
+data_use_prelim <- data.frame(Norm_Covid)
+good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
+dat_use <- subset(data_use_prelim,good_obs_data_use)
+y_use <- subset(borough_f,good_obs_data_use)
+
+set.seed(12345)
+NN_obs <- sum(good_obs_data_use == 1)
+select1 <- (runif(NN_obs) < 0.8)
+train_data <- subset(dat_use,select1)
+test_data <- subset(dat_use,(!select1))
+cl_data <- y_use[select1]
+true_data <- y_use[!select1]
+
+summary(cl_data)
+prop.table(summary(cl_data))
+summary(train_data)
+require(class)
+for (indx in seq(1, 9, by= 2)) {
+  pred_borough <- knn(train_data, test_data, cl_data, k = indx, l = 0, prob = FALSE, use.all = TRUE)
+  num_correct_labels <- sum(pred_borough == true_data)
+  correct_rate <- num_correct_labels/length(true_data)
+  print(c(indx,correct_rate))
+}
+
+cl_data_n <- as.numeric(cl_data)
+
+model_ols1 <- lm(cl_data_n ~ train_data$norm_inc_tot + train_data$norm_housing_cost)
+
+y_hat <- fitted.values(model_ols1)
+
+mean(y_hat[cl_data_n == 1])
+mean(y_hat[cl_data_n == 2])
+mean(y_hat[cl_data_n == 3])
+mean(y_hat[cl_data_n == 4])
+mean(y_hat[cl_data_n == 5])
+
+
+
+cl_data_n1 <- as.numeric(cl_data_n == 1)
+model_ols_v1 <- lm(cl_data_n1 ~ train_data$norm_inc_tot + train_data$norm_housing_cost)
+y_hat_v1 <- fitted.values(model_ols_v1)
+mean(y_hat_v1[cl_data_n1 == 1])
+mean(y_hat_v1[cl_data_n1 == 0])
+
+
+
+
+
+
+
+TRISTATE <- ((Household_Pulse_data$EST_ST==09) + (Household_Pulse_data$EST_ST==36) + (Household_Pulse_data$EST_ST==34))
+NOT_Work <- Household_Pulse_data$RSNNOWRKRV == 2
+NOT_Work2 <- Household_Pulse_data$RSNNOWRKRV == 9
+NOT_Work3 <- Household_Pulse_data$RSNNOWRKRV == 11
+
+borough_f <- factor((NOT_Work + 2*NOT_Work2 + 3*NOT_Work3 + 4*TRISTATE), levels=c(1,2,3,4),labels = c("COVID","Employer Closed","NO Transwork", "TRISTATE"))
+
+norm_varb <- function(X_in) {
+  (X_in - min(X_in, na.rm = TRUE))/( max(X_in, na.rm = TRUE) - min(X_in, na.rm = TRUE) )
+}
+
+
+Norm_TRISTATE <- norm_varb(Household_Pulse_data$TRISTATE)
+
+data_use_prelim <- data.frame(Norm_TRISTATE)
+good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
+dat_use <- subset(data_use_prelim,good_obs_data_use)
+y_use <- subset(borough_f,good_obs_data_use)
+
+set.seed(12345)
+NN_obs <- sum(good_obs_data_use == 1)
+select1 <- (runif(NN_obs) < 0.8)
+train_data <- subset(dat_use,select1)
+test_data <- subset(dat_use,(!select1))
+cl_data <- y_use[select1]
+true_data <- y_use[!select1]
+
+summary(cl_data)
+prop.table(summary(cl_data))
+summary(train_data)
+require(class)
+for (indx in seq(1, 9, by= 2)) {
+  pred_borough <- knn(train_data, test_data, cl_data, k = indx, l = 0, prob = FALSE, use.all = TRUE)
+  num_correct_labels <- sum(pred_borough == true_data)
+  correct_rate <- num_correct_labels/length(true_data)
+  print(c(indx,correct_rate))
+}
+
+cl_data_n <- as.numeric(cl_data)
+
+model_ols1 <- lm(cl_data_n ~ train_data$norm_inc_tot + train_data$norm_housing_cost)
+
+y_hat <- fitted.values(model_ols1)
+
+mean(y_hat[cl_data_n == 1])
+mean(y_hat[cl_data_n == 2])
+mean(y_hat[cl_data_n == 3])
+mean(y_hat[cl_data_n == 4])
+mean(y_hat[cl_data_n == 5])
+
+
+
+cl_data_n1 <- as.numeric(cl_data_n == 1)
+model_ols_v1 <- lm(cl_data_n1 ~ train_data$norm_inc_tot + train_data$norm_housing_cost)
+y_hat_v1 <- fitted.values(model_ols_v1)
+mean(y_hat_v1[cl_data_n1 == 1])
+mean(y_hat_v1[cl_data_n1 == 0])
