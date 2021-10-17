@@ -1,24 +1,44 @@
+
 summary(Household_Pulse_data)
 attach(Household_Pulse_data)
 detach()
+#First I made the change to Numeric
 Household_Pulse_data$EEDUC <- (as.numeric(Household_Pulse_data$EEDUC))
 Household_Pulse_data$RECVDVACC <- (as.numeric(Household_Pulse_data$RECVDVACC))
 Household_Pulse_data$REGION <- (as.numeric(Household_Pulse_data$REGION))
 Household_Pulse_data$GENID_DESCRIBE <- (as.numeric(Household_Pulse_data$GENID_DESCRIBE))
+
+#Question 3, In question number 3 I want to look at the information regarding a few racial subgroups and the likely 
+#hood of those subgroups being foreclosed on.  
+#I feel like this is interesting information because it deals with the home ownership of American citizens and the 
+#more people that are dispersed from their homes the more stress on Society as a whole.  
+#“The disruption, displacement, and economic impacts of foreclosure are substantial but do not exhaust the list of 
+#possible effects experienced by families.  
+#For some families, increased personal and family stress feeds martial problems (one of our data points == MS) how 
+#much a child eats (CHILDFOOD)  and other problems like ANXIOUS, WORRY, INTEREST, DOWN.”  
+#This displacement only exacerbates negative behaviors and I think that by looking at the displacement we can 
+#then in the future look at some conclusion this might have on these secondary or trickle-down issues.  
+#I think it all starts with housing  so I have chosen to look at racial subgroups and likelihood of foreclosure. 
+
+#First I have identified the data that I want to look at and as stated would be a few Racial subgroups and the Likelihood of Foreclosure
+#Next I formated the data into a workable observation changing the data to numeric
 Household_Pulse_data$FORCLOSE <- (as.numeric(Household_Pulse_data$FORCLOSE))
 Household_Pulse_data$RRACE <- (as.numeric(Household_Pulse_data$RRACE))
-
-
-
+#Then I created Subgroups from this new material in the now modified organial data set
+#This created new subgroup Variables in the Environment I can compare in a regression.
 WhiteOUT <- Household_Pulse_data$RRACE == 1
 BlackOUT <- Household_Pulse_data$RRACE == 2
 AsainOUT <- Household_Pulse_data$RRACE == 3
-
-
-
-NO_House <- Household_Pulse_data$FORCLOSE == 4
-
-
-
+#Now I have also created a variable to account specifially for Very Likely that people from these racial subgroups will be
+#Forclosed on in the next two months which is Forclose == 1.
+NO_House <- Household_Pulse_data$FORCLOSE == 1
+#I have used the new No_House Variable as the dependent variable and compared the White, Black, and Asain 
+#Subgroup to No_House to see if there is any Signaifcance and Difference
 Regression_1 <- lm(NO_House ~ WhiteOUT + BlackOUT + AsainOUT)
 summary(Regression_1)
+#Once the data is reviewed we can make a determination on any Difference and Significance.
+#  After looking at the determinations I have concluded that based on the P Values and the Estimates
+#  I must reject the Null Hypothesis in favor of the alternative hypothesis.  I found with 99% confidance
+#  that the test was signigicant and we can also validate that using the signif.codes.  This means that 
+#  there is no difference between racial groups and the likely hood of people being forclosed on in the
+#  next two months.
