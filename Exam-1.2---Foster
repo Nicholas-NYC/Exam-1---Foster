@@ -49,14 +49,16 @@ detach()
 #Household_Pulse_data$FORCLOSE <- (as.numeric(Household_Pulse_data$FORCLOSE))
 #Household_Pulse_data$RRACE <- (as.numeric(Household_Pulse_data$RRACE))
 
-#Then I created Subgroups from this new material in the now modified organial data set
+#This later turned out to be a poor method of evaluation so I switched gears.
+
+#Instead I created Subgroups from the orginal data set.
 #This created new subgroup Variables in the Environment I can compare in a regression.
 WhiteOUT <- Household_Pulse_data$RRACE == "White"
 summary(RRACE)
 BlackOUT <- Household_Pulse_data$RRACE == "Black"
 AsainOUT <- Household_Pulse_data$RRACE == "Asian"
 #Now I have also created a variable to account specifially for Very Likely that people from these racial subgroups will be
-#Forclosed on in the next two months which is Forclose == 1.
+#Forclosed on in the next two months which is FORCLOSE == Very Likely Forclosed in next 2 months.
 NO_House <- Household_Pulse_data$FORCLOSE == "very likely forclosed in next 2 months"
 summary(FORCLOSE)
 #I have used the new No_House Variable as the dependent variable and compared the White, Black, and Asain 
@@ -120,6 +122,14 @@ for (indx in seq(1, 9, by= 2)) {
   correct_rate <- num_correct_labels/length(true_data)
   print(c(indx,correct_rate))
 }
+###  Upon review of the data, I found that using Norm_Covid <- norm_varb(Household_Pulse_data$HADCOVID == "yes doctor told had covid")
+###  Norm_Covid1 <- norm_varb(Household_Pulse_data$INCOME == "HH income $50k - 74.9") were very accurate in my prodiction model yeilding
+###  a .7042 based on the input variables.  I wanted to see if there was any effect if I choose to look at specific region.
+###  Below I was hoping to produce a more accurate picture and the results follow.
+
+
+
+
 ### Running with a 3rd Variable which would be Norm Covid2
 data_use_prelim <- data.frame(Norm_Covid, Norm_Covid1, Norm_Covid2)
 good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
@@ -144,7 +154,8 @@ for (indx in seq(1, 9, by= 2)) {
   correct_rate <- num_correct_labels/length(true_data)
   print(c(indx,correct_rate))
 }
-###  Upon review of the data, I found that adding an aditional variblae (Region) to help predict accuracy in the Model
+###  Upon review of the data, I found that adding an aditional variblae (Region) had no change on predicting  accuracy in the Model nor
 ###  reduced the chance of guessing who might have been outta work due to Covid given the other variables income and hadcovid.
-###  Income and hadcoivd produced a better percentage chance prediction of 0.545 as compared to 0.518 with the additional
-###  variable (Region) added. 
+###  Income and hadcoivd produced a better percentage chance prediction of 0.7042 as compared to 0.7042 with the additional
+###  variable (Region) added. Again this had no bering on the results.
+
