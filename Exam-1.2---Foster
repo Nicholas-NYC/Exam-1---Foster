@@ -1,16 +1,36 @@
+xtabs(~ EEDUC + RECVDVACC + REGION)
+
+summary(EEDUC)
+summary(RECVDVACC)
+summary(REGION)
+
+GOT_Shived <- Household_Pulse_data$RECVDVACC == "yes got vaxx"
+
+Number1Regression <- lm(GOT_Shived ~ REGION * EEDUC)
+
+summary(Number1Regression)
+Anova(Number1Regression)
+TukeyHSD(aov(Number1Regression))
+
+
+#I will be reviewing the first line of output "South:less than hs-Northeast:less than hs    0.0225447372 -1.801115e-01  2.252009e-01 1.0000000"
+#My level of confidance is .99 which would yeild a level of significance of .01.  My P value is 1 which is greater than my level of
+#of significance which mean we would fail to reject the Null Hypothese, resulting in favoring the Null Hypothese which would mean
+#there is no difference in the vaccination rate between South:less than hs-Northeast:less than hs.
+
+Regression_2 <- lm(GOT_Shived ~ GENID_DESCRIBE * EEDUC)
+summary(Regression_2)
+Anova(Regression_2)
+TukeyHSD(aov(Regression_2))
+
+#I will be reviewing this line of output "female:less than hs-male:less than hs           -6.341524e-02 -0.1938985664  0.0670680874 0.9971717"
+#My level of confidance is .99 which would yeild a level of significance of .01.  My P value is 1 which is greater than my level of
+#of significance which mean we would fail to reject the Null Hypothese,resulting in favoring the Null Hypothese which would mean
+#there is no difference in the vaccination rate between female:less than hs-male:less than hs.
 summary(Household_Pulse_data)
 attach(Household_Pulse_data)
 detach()
-#First I made the change to Numeric
-Household_Pulse_data$EEDUC <- (as.numeric(Household_Pulse_data$EEDUC))
-Household_Pulse_data$RECVDVACC <- (as.numeric(Household_Pulse_data$RECVDVACC))
-Household_Pulse_data$REGION <- (as.numeric(Household_Pulse_data$REGION))
-Household_Pulse_data$GENID_DESCRIBE <- (as.numeric(Household_Pulse_data$GENID_DESCRIBE))
-Household_Pulse_data$MS <- (as.numeric(Household_Pulse_data$MS))
-Household_Pulse_data$RSNNOWRKRV <- (as.numeric(Household_Pulse_data$RSNNOWRKRV))
-Household_Pulse_data$CHLDCARE <- (as.numeric(Household_Pulse_data$CHLDCARE))
-Household_Pulse_data$HADCOVID <- (as.numeric(Household_Pulse_data$HADCOVID))
-Household_Pulse_data$INCOME <- (as.numeric(Household_Pulse_data$INCOME))
+
 #Question 3, In question number 3 I want to look at the information regarding a few racial subgroups and the likely 
 #hood of those subgroups being foreclosed on.  
 #I feel like this is interesting information because it deals with the home ownership of American citizens and the 
@@ -24,17 +44,21 @@ Household_Pulse_data$INCOME <- (as.numeric(Household_Pulse_data$INCOME))
 #I think it all starts with housing  so I have chosen to look at racial subgroups and likelihood of foreclosure. 
 
 #First I have identified the data that I want to look at and as stated would be a few Racial subgroups and the Likelihood of Foreclosure
-#Next I formated the data into a workable observation changing the data to numeric
-Household_Pulse_data$FORCLOSE <- (as.numeric(Household_Pulse_data$FORCLOSE))
-Household_Pulse_data$RRACE <- (as.numeric(Household_Pulse_data$RRACE))
+#Next I formated the data into a workable observation changing the data to numeric but that didn't need to happen as we can see below. 
+
+#Household_Pulse_data$FORCLOSE <- (as.numeric(Household_Pulse_data$FORCLOSE))
+#Household_Pulse_data$RRACE <- (as.numeric(Household_Pulse_data$RRACE))
+
 #Then I created Subgroups from this new material in the now modified organial data set
 #This created new subgroup Variables in the Environment I can compare in a regression.
-WhiteOUT <- Household_Pulse_data$RRACE == 1
-BlackOUT <- Household_Pulse_data$RRACE == 2
-AsainOUT <- Household_Pulse_data$RRACE == 3
+WhiteOUT <- Household_Pulse_data$RRACE == "White"
+summary(RRACE)
+BlackOUT <- Household_Pulse_data$RRACE == "Black"
+AsainOUT <- Household_Pulse_data$RRACE == "Asian"
 #Now I have also created a variable to account specifially for Very Likely that people from these racial subgroups will be
 #Forclosed on in the next two months which is Forclose == 1.
-NO_House <- Household_Pulse_data$FORCLOSE == 1
+NO_House <- Household_Pulse_data$FORCLOSE == "very likely forclosed in next 2 months"
+summary(FORCLOSE)
 #I have used the new No_House Variable as the dependent variable and compared the White, Black, and Asain 
 #Subgroup to No_House to see if there is any Signaifcance and Difference
 Regression_1 <- lm(NO_House ~ WhiteOUT + BlackOUT + AsainOUT)
@@ -53,9 +77,10 @@ Anova(Regression_1)
 #  if we choose to use a .001 level only then will the black subgroup show any signs of difference.  
 
 #  KNN
-NOT_Work <- Household_Pulse_data$RSNNOWRKRV == 2
-NOT_Work2 <- Household_Pulse_data$RSNNOWRKRV == 9
-NOT_Work3 <- Household_Pulse_data$RSNNOWRKRV == 11
+NOT_Work <- Household_Pulse_data$RSNNOWRKRV == "am/was sick w covid or caring for sick w covid"
+summary(RSNNOWRKRV)
+NOT_Work2 <- Household_Pulse_data$RSNNOWRKRV ==  "employer closed because covid"
+NOT_Work3 <- Household_Pulse_data$RSNNOWRKRV == "no transport"
 
 borough_f <- factor((NOT_Work + 2*NOT_Work2 + 3*NOT_Work3), levels=c(1,2,3),labels = c("COVID","Employer Closed","NO Transwork"))
 
@@ -63,10 +88,12 @@ norm_varb <- function(X_in) {
   (X_in - min(X_in, na.rm = TRUE))/( max(X_in, na.rm = TRUE) - min(X_in, na.rm = TRUE) )
 }
 
-Norm_Covid <- norm_varb(Household_Pulse_data$HADCOVID)
-Norm_Covid1 <- norm_varb(Household_Pulse_data$INCOME)
-Norm_Covid2 <- norm_varb(Household_Pulse_data$REGION)
-
+Norm_Covid <- norm_varb(Household_Pulse_data$HADCOVID == "yes doctor told had covid")
+summary(HADCOVID)
+Norm_Covid1 <- norm_varb(Household_Pulse_data$INCOME == "HH income $50k - 74.9")
+summary(INCOME)
+Norm_Covid2 <- norm_varb(Household_Pulse_data$REGION == "Northeast")
+summary(REGION)
 
 
 
@@ -121,5 +148,3 @@ for (indx in seq(1, 9, by= 2)) {
 ###  reduced the chance of guessing who might have been outta work due to Covid given the other variables income and hadcovid.
 ###  Income and hadcoivd produced a better percentage chance prediction of 0.545 as compared to 0.518 with the additional
 ###  variable (Region) added. 
-
-xtabs(~ EEDUC + RECVDVACC + REGION) REGION = Northeast
