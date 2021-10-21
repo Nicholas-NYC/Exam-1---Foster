@@ -70,6 +70,30 @@ Norm_Covid2 <- norm_varb(Household_Pulse_data$REGION)
 
 
 
+data_use_prelim <- data.frame(Norm_Covid, Norm_Covid1)
+good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
+dat_use <- subset(data_use_prelim,good_obs_data_use)
+y_use <- subset(borough_f,good_obs_data_use)
+
+set.seed(12345)
+NN_obs <- sum(good_obs_data_use == 1)
+select1 <- (runif(NN_obs) < 0.8)
+train_data <- subset(dat_use,select1)
+test_data <- subset(dat_use,(!select1))
+cl_data <- y_use[select1]
+true_data <- y_use[!select1]
+
+summary(cl_data)
+prop.table(summary(cl_data))
+summary(train_data)
+require(class)
+for (indx in seq(1, 9, by= 2)) {
+  pred_borough <- knn(train_data, test_data, cl_data, k = indx, l = 0, prob = FALSE, use.all = TRUE)
+  num_correct_labels <- sum(pred_borough == true_data)
+  correct_rate <- num_correct_labels/length(true_data)
+  print(c(indx,correct_rate))
+}
+### Running with a 3rd Variable which would be Norm Covid2
 data_use_prelim <- data.frame(Norm_Covid, Norm_Covid1, Norm_Covid2)
 good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
 dat_use <- subset(data_use_prelim,good_obs_data_use)
@@ -93,4 +117,9 @@ for (indx in seq(1, 9, by= 2)) {
   correct_rate <- num_correct_labels/length(true_data)
   print(c(indx,correct_rate))
 }
+###  Upon review of the data, I found that adding an aditional variblae (Region) to help predict accuracy in the Model
+###  reduced the chance of guessing who might have been outta work due to Covid given the other variables income and hadcovid.
+###  Income and hadcoivd produced a better percentage chance prediction of 0.545 as compared to 0.518 with the additional
+###  variable (Region) added. 
 
+xtabs(~ EEDUC + RECVDVACC + REGION) REGION = Northeast
