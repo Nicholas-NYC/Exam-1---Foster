@@ -1,1 +1,1001 @@
+EEDUCassoc deg                 0.213426   0.048687   4.384 1.17e-05 ***
+EEDUCbach deg                  0.276836   0.048005   5.767 8.11e-09 ***
+EEDUCadv deg                   0.301789   0.048007   6.286 3.27e-10 ***
+REGIONSouth:EEDUCsome hs      -0.211814   0.064397  -3.289  0.00101 ** 
+REGIONMidwest:EEDUCsome hs    -0.162286   0.073220  -2.216  0.02667 *  
+REGIONWest:EEDUCsome hs       -0.252577   0.064607  -3.909 9.26e-05 ***
+REGIONSouth:EEDUCHS diploma   -0.098248   0.055689  -1.764  0.07770 .  
+REGIONMidwest:EEDUCHS diploma -0.028202   0.063710  -0.443  0.65801    
+REGIONWest:EEDUCHS diploma    -0.157009   0.055913  -2.808  0.00498 ** 
+REGIONSouth:EEDUCsome coll    -0.081578   0.055295  -1.475  0.14013    
+REGIONMidwest:EEDUCsome coll  -0.029526   0.063305  -0.466  0.64092    
+REGIONWest:EEDUCsome coll     -0.152887   0.055411  -2.759  0.00580 ** 
+REGIONSouth:EEDUCassoc deg    -0.075287   0.055883  -1.347  0.17791    
+REGIONMidwest:EEDUCassoc deg  -0.024802   0.063847  -0.388  0.69768    
+REGIONWest:EEDUCassoc deg     -0.148837   0.055986  -2.658  0.00785 ** 
+REGIONSouth:EEDUCbach deg     -0.054275   0.055025  -0.986  0.32395    
+REGIONMidwest:EEDUCbach deg   -0.009453   0.063028  -0.150  0.88078    
+REGIONWest:EEDUCbach deg      -0.143350   0.055150  -2.599  0.00934 ** 
+REGIONSouth:EEDUCadv deg      -0.049370   0.055037  -0.897  0.36971    
+REGIONMidwest:EEDUCadv deg     0.004194   0.063084   0.066  0.94699    
+REGIONWest:EEDUCadv deg       -0.132089   0.055181  -2.394  0.01668 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
+Residual standard error: 0.3266 on 69086 degrees of freedom
+Multiple R-squared:  0.03907,	Adjusted R-squared:  0.0387 
+F-statistic:   104 on 27 and 69086 DF,  p-value: < 2.2e-16
+
+> Anova(Number1Regression)
+Anova Table (Type II tests)
+
+Response: GOT_Shived
+             Sum Sq    Df  F value    Pr(>F)    
+REGION         16.8     3  52.5032 < 2.2e-16 ***
+EEDUC         271.9     6 424.7909 < 2.2e-16 ***
+REGION:EEDUC    6.1    18   3.1833 5.583e-06 ***
+Residuals    7370.9 69086                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(aov(Number1Regression))
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = Number1Regression)
+
+$REGION
+                          diff         lwr          upr     p adj
+South-Northeast   -0.049971327 -0.05988347 -0.040059185 0.0000000
+Midwest-Northeast -0.051609961 -0.06250885 -0.040711071 0.0000000
+West-Northeast    -0.031840679 -0.04177912 -0.021902242 0.0000000
+Midwest-South     -0.001638635 -0.01072874  0.007451471 0.9670598
+West-South         0.018130648  0.01021757  0.026043722 0.0000000
+West-Midwest       0.019769283  0.01065051  0.028888055 0.0000002
+
+$EEDUC
+                                diff          lwr        upr     p adj
+some hs-less than hs    -0.009528889 -0.066514361 0.04745658 0.9989507
+HS diploma-less than hs  0.069861780  0.021132485 0.11859108 0.0004729
+some coll-less than hs   0.117752111  0.069585256 0.16591897 0.0000000
+assoc deg-less than hs   0.128272795  0.079487232 0.17705836 0.0000000
+bach deg-less than hs    0.203245670  0.155259169 0.25123217 0.0000000
+adv deg-less than hs     0.235753389  0.187703296 0.28380348 0.0000000
+HS diploma-some hs       0.079390670  0.046090885 0.11269045 0.0000000
+some coll-some hs        0.127281000  0.094809824 0.15975218 0.0000000
+assoc deg-some hs        0.137801684  0.104419616 0.17118375 0.0000000
+bach deg-some hs         0.212774559  0.180571521 0.24497760 0.0000000
+adv deg-some hs          0.245282279  0.212984555 0.27758000 0.0000000
+some coll-HS diploma     0.047890331  0.034415260 0.06136540 0.0000000
+assoc deg-HS diploma     0.058411014  0.042868726 0.07395330 0.0000000
+bach deg-HS diploma      0.133383889  0.120568434 0.14619934 0.0000000
+adv deg-HS diploma       0.165891609  0.152840051 0.17894317 0.0000000
+assoc deg-some coll      0.010520684 -0.003156465 0.02419783 0.2596991
+bach deg-some coll       0.085493558  0.075017988 0.09596913 0.0000000
+adv deg-some coll        0.118001278  0.107238154 0.12876440 0.0000000
+bach deg-assoc deg       0.074972875  0.061945107 0.08800064 0.0000000
+adv deg-assoc deg        0.107480595  0.094220504 0.12074069 0.0000000
+adv deg-bach deg         0.032507720  0.022582842 0.04243260 0.0000000
+
+$`REGION:EEDUC`
+                                                     diff           lwr           upr     p adj
+South:less than hs-Northeast:less than hs    0.0225447372 -1.801115e-01  2.252009e-01 1.0000000
+Midwest:less than hs-Northeast:less than hs -0.0288052373 -2.611153e-01  2.035049e-01 1.0000000
+West:less than hs-Northeast:less than hs     0.1174525589 -8.569061e-02  3.205957e-01 0.9354250
+Northeast:some hs-Northeast:less than hs     0.1829452170 -2.420650e-02  3.900969e-01 0.1844842
+South:some hs-Northeast:less than hs        -0.0063236941 -1.957391e-01  1.830917e-01 1.0000000
+Midwest:some hs-Northeast:less than hs      -0.0081458967 -2.074762e-01  1.911844e-01 1.0000000
+West:some hs-Northeast:less than hs          0.0478210303 -1.420580e-01  2.377001e-01 1.0000000
+Northeast:HS diploma-Northeast:less than hs  0.1661283432 -1.415780e-02  3.464145e-01 0.1247669
+South:HS diploma-Northeast:less than hs      0.0904255319 -8.806465e-02  2.689157e-01 0.9869164
+Midwest:HS diploma-Northeast:less than hs    0.1091211841 -7.025016e-02  2.884925e-01 0.8922690
+West:HS diploma-Northeast:less than hs       0.1265715105 -5.232810e-02  3.054711e-01 0.6523406
+Northeast:some coll-Northeast:less than hs   0.2073122206  2.806260e-02  3.865618e-01 0.0054312
+South:some coll-Northeast:less than hs       0.1482784977 -2.956457e-02  3.261216e-01 0.2881755
+Midwest:some coll-Northeast:less than hs     0.1489809316 -2.944793e-02  3.274098e-01 0.2853007
+West:some coll-Northeast:less than hs        0.1718774587 -5.906714e-03  3.496616e-01 0.0749366
+Northeast:assoc deg-Northeast:less than hs   0.2134264726  3.257976e-02  3.942732e-01 0.0037311
+South:assoc deg-Northeast:less than hs       0.1606841526 -1.807608e-02  3.394444e-01 0.1578414
+Midwest:assoc deg-Northeast:less than hs     0.1598194713 -1.965997e-02  3.392989e-01 0.1717196
+West:assoc deg-Northeast:less than hs        0.1820416935  3.392646e-03  3.606907e-01 0.0392369
+Northeast:bach deg-Northeast:less than hs    0.2768361194  9.852214e-02  4.551501e-01 0.0000030
+South:bach deg-Northeast:less than hs        0.2451054505  6.747912e-02  4.227318e-01 0.0001066
+Midwest:bach deg-Northeast:less than hs      0.2385783028  6.056658e-02  4.165900e-01 0.0002273
+West:bach deg-Northeast:less than hs         0.2509390536  7.333174e-02  4.285464e-01 0.0000558
+Northeast:adv deg-Northeast:less than hs     0.3017891683  1.234674e-01  4.801109e-01 0.0000001
+South:adv deg-Northeast:less than hs         0.2749642897  9.729280e-02  4.526358e-01 0.0000033
+Midwest:adv deg-Northeast:less than hs       0.2771782066  9.889777e-02  4.554586e-01 0.0000029
+West:adv deg-Northeast:less than hs          0.2871528046  1.094217e-01  4.648839e-01 0.0000007
+Midwest:less than hs-South:less than hs     -0.0513499745 -2.313392e-01  1.286392e-01 0.9999996
+West:less than hs-South:less than hs         0.0949078217 -4.543201e-02  2.352477e-01 0.7414455
+Northeast:some hs-South:less than hs         0.1604004797  1.431846e-02  3.064825e-01 0.0131867
+South:some hs-South:less than hs            -0.0288684313 -1.484775e-01  9.074064e-02 1.0000000
+Midwest:some hs-South:less than hs          -0.0306906339 -1.654522e-01  1.040709e-01 1.0000000
+West:some hs-South:less than hs              0.0252762931 -9.506565e-02  1.456182e-01 1.0000000
+Northeast:HS diploma-South:less than hs      0.1435836059  3.903115e-02  2.481361e-01 0.0001211
+South:HS diploma-South:less than hs          0.0678807947 -3.354340e-02  1.693050e-01 0.7600530
+Midwest:HS diploma-South:less than hs        0.0865764469 -1.639056e-02  1.895435e-01 0.2715083
+West:HS diploma-South:less than hs           0.1040267733  1.883758e-03  2.061698e-01 0.0395168
+Northeast:some coll-South:less than hs       0.1847674834  8.201268e-02  2.875223e-01 0.0000000
+South:some coll-South:less than hs           0.1257337604  2.545276e-02  2.260148e-01 0.0010853
+Midwest:some coll-South:less than hs         0.1264361944  2.511994e-02  2.277524e-01 0.0012018
+West:some coll-South:less than hs            0.1493327215  4.915620e-02  2.495092e-01 0.0000113
+Northeast:assoc deg-South:less than hs       0.1908817354  8.536559e-02  2.963979e-01 0.0000000
+South:assoc deg-South:less than hs           0.1381394154  3.624073e-02  2.400381e-01 0.0001698
+Midwest:assoc deg-South:less than hs         0.1372747341  3.411954e-02  2.404299e-01 0.0002713
+West:assoc deg-South:less than hs            0.1594969563  5.779344e-02  2.612005e-01 0.0000021
+Northeast:bach deg-South:less than hs        0.2542913822  1.531776e-01  3.554052e-01 0.0000000
+South:bach deg-South:less than hs            0.2225607133  1.226646e-01  3.224568e-01 0.0000000
+Midwest:bach deg-South:less than hs          0.2160335655  1.154538e-01  3.166134e-01 0.0000000
+West:bach deg-South:less than hs             0.2283943164  1.285320e-01  3.282566e-01 0.0000000
+Northeast:adv deg-South:less than hs         0.2792444311  1.781169e-01  3.803719e-01 0.0000000
+South:adv deg-South:less than hs             0.2524195524  1.524431e-01  3.523960e-01 0.0000000
+Midwest:adv deg-South:less than hs           0.2546334693  1.535788e-01  3.556881e-01 0.0000000
+West:adv deg-South:less than hs              0.2646080674  1.645257e-01  3.646904e-01 0.0000000
+West:less than hs-Midwest:less than hs       0.1462577963 -3.427951e-02  3.267951e-01 0.3481707
+Northeast:some hs-Midwest:less than hs       0.2117504543  2.671422e-02  3.967867e-01 0.0065670
+South:some hs-Midwest:less than hs           0.0224815432 -1.424572e-01  1.874203e-01 1.0000000
+Midwest:some hs-Midwest:less than hs         0.0206593407 -1.555767e-01  1.968953e-01 1.0000000
+West:some hs-Midwest:less than hs            0.0766262676 -8.884468e-02  2.420972e-01 0.9964080
+Northeast:HS diploma-Midwest:less than hs    0.1949335805  4.056497e-02  3.493022e-01 0.0009280
+South:HS diploma-Midwest:less than hs        0.1192307692 -3.303649e-02  2.714980e-01 0.4238186
+Midwest:HS diploma-Midwest:less than hs      0.1379264214 -1.537281e-02  2.912257e-01 0.1565050
+West:HS diploma-Midwest:less than hs         0.1553767478  2.629748e-03  3.081237e-01 0.0401491
+Northeast:some coll-Midwest:less than hs     0.2361174579  8.296067e-02  3.892742e-01 0.0000038
+South:some coll-Midwest:less than hs         0.1770837350  2.557555e-02  3.285919e-01 0.0044749
+Midwest:some coll-Midwest:less than hs       0.1777861690  2.559079e-02  3.299815e-01 0.0045223
+West:some coll-Midwest:less than hs          0.2006826961  4.924365e-02  3.521217e-01 0.0003010
+Northeast:assoc deg-Midwest:less than hs     0.2422317100  8.720878e-02  3.972546e-01 0.0000024
+South:assoc deg-Midwest:less than hs         0.1894893899  3.690566e-02  3.420731e-01 0.0013342
+Midwest:assoc deg-Midwest:less than hs       0.1886247086  3.519901e-02  3.420504e-01 0.0016505
+West:assoc deg-Midwest:less than hs          0.2108469308  5.839348e-02  3.633004e-01 0.0001003
+Northeast:bach deg-Midwest:less than hs      0.3056413567  1.535807e-01  4.577020e-01 0.0000000
+South:bach deg-Midwest:less than hs          0.2739106878  1.226570e-01  4.251644e-01 0.0000000
+Midwest:bach deg-Midwest:less than hs        0.2673835401  1.156774e-01  4.190897e-01 0.0000000
+West:bach deg-Midwest:less than hs           0.2797442910  1.285129e-01  4.309757e-01 0.0000000
+Northeast:adv deg-Midwest:less than hs       0.3305944056  1.785246e-01  4.826642e-01 0.0000000
+South:adv deg-Midwest:less than hs           0.3037695270  1.524628e-01  4.550763e-01 0.0000000
+Midwest:adv deg-Midwest:less than hs         0.3059834439  1.539621e-01  4.580048e-01 0.0000000
+West:adv deg-Midwest:less than hs            0.3159580420  1.645813e-01  4.673348e-01 0.0000000
+Northeast:some hs-West:less than hs          0.0654926580 -8.126417e-02  2.122495e-01 0.9979829
+South:some hs-West:less than hs             -0.1237762530 -2.442086e-01 -3.343940e-03 0.0349860
+Midwest:some hs-West:less than hs           -0.1255984556 -2.610912e-01  9.894299e-03 0.1175876
+West:some hs-West:less than hs              -0.0696315286 -1.907917e-01  5.152867e-02 0.9394540
+Northeast:HS diploma-West:less than hs       0.0486757842 -5.681748e-02  1.541690e-01 0.9966009
+South:HS diploma-West:less than hs          -0.0270270270 -1.294208e-01  7.536672e-02 0.9999999
+Midwest:HS diploma-West:less than hs        -0.0083313749 -1.122535e-01  9.559079e-02 1.0000000
+West:HS diploma-West:less than hs            0.0091189516 -9.398685e-02  1.122248e-01 1.0000000
+Northeast:some coll-West:less than hs        0.0898596616 -1.385225e-02  1.935716e-01 0.2161531
+South:some coll-West:less than hs            0.0308259387 -7.043556e-02  1.320874e-01 0.9999985
+Midwest:some coll-West:less than hs          0.0315283727 -7.075845e-02  1.338152e-01 0.9999981
+West:some coll-West:less than hs             0.0544248998 -4.673313e-02  1.555829e-01 0.9716452
+Northeast:assoc deg-West:less than hs        0.0959739137 -1.047452e-02  2.024223e-01 0.1535428
+South:assoc deg-West:less than hs            0.0432315937 -5.963217e-02  1.460954e-01 0.9992490
+Midwest:assoc deg-West:less than hs          0.0423669124 -6.174171e-02  1.464755e-01 0.9995694
+West:assoc deg-West:less than hs             0.0645891346 -3.808130e-02  1.672596e-01 0.8538494
+Northeast:bach deg-West:less than hs         0.1593835604  5.729728e-02  2.614698e-01 0.0000025
+South:bach deg-West:less than hs             0.1276528916  2.677253e-02  2.285333e-01 0.0008865
+Midwest:bach deg-West:less than hs           0.1211257438  1.956834e-02  2.226832e-01 0.0030443
+West:bach deg-West:less than hs              0.1334864947  3.263962e-02  2.343334e-01 0.0003096
+Northeast:adv deg-West:less than hs          0.1843366093  8.223673e-02  2.864365e-01 0.0000000
+South:adv deg-West:less than hs              0.1575117307  5.655186e-02  2.584716e-01 0.0000025
+Midwest:adv deg-West:less than hs            0.1597256476  5.769797e-02  2.617533e-01 0.0000023
+West:adv deg-West:less than hs               0.1697002457  6.863547e-02  2.707650e-01 0.0000002
+South:some hs-Northeast:some hs             -0.1892689110 -3.163462e-01 -6.219165e-02 0.0000117
+Midwest:some hs-Northeast:some hs           -0.1910911136 -3.325230e-01 -4.965924e-02 0.0001851
+West:some hs-Northeast:some hs              -0.1351241866 -2.628915e-01 -7.356893e-03 0.0234103
+Northeast:HS diploma-Northeast:some hs      -0.0168168738 -1.298369e-01  9.620310e-02 1.0000000
+South:HS diploma-Northeast:some hs          -0.0925196850 -2.026522e-01  1.761281e-02 0.2732306
+Midwest:HS diploma-Northeast:some hs        -0.0738240329 -1.853790e-01  3.773090e-02 0.7793314
+West:HS diploma-Northeast:some hs           -0.0563737064 -1.671685e-01  5.442112e-02 0.9861323
+Northeast:some coll-Northeast:some hs        0.0243670036 -8.699209e-02  1.357261e-01 1.0000000
+South:some coll-Northeast:some hs           -0.0346667193 -1.437473e-01  7.441388e-02 0.9999963
+Midwest:some coll-Northeast:some hs         -0.0339642853 -1.439974e-01  7.606881e-02 0.9999980
+West:some coll-Northeast:some hs            -0.0110677582 -1.200523e-01  9.791680e-02 1.0000000
+Northeast:assoc deg-Northeast:some hs        0.0304812557 -8.343080e-02  1.443933e-01 0.9999999
+South:assoc deg-Northeast:some hs           -0.0222610643 -1.328307e-01  8.830856e-02 1.0000000
+Midwest:assoc deg-Northeast:some hs         -0.0231257456 -1.348544e-01  8.860291e-02 1.0000000
+West:assoc deg-Northeast:some hs            -0.0009035234 -1.112933e-01  1.094863e-01 1.0000000
+Northeast:bach deg-Northeast:some hs         0.0938909024 -1.595579e-02  2.037376e-01 0.2403978
+South:bach deg-Northeast:some hs             0.0621602336 -4.656665e-02  1.708871e-01 0.9427858
+Midwest:bach deg-Northeast:some hs           0.0556330858 -5.372227e-02  1.649884e-01 0.9861597
+West:bach deg-Northeast:some hs              0.0679938367 -4.070197e-02  1.766896e-01 0.8609326
+Northeast:adv deg-Northeast:some hs          0.1188439513  8.984619e-03  2.287033e-01 0.0166691
+South:adv deg-Northeast:some hs              0.0920190727 -1.678158e-02  2.008197e-01 0.2601973
+Midwest:adv deg-Northeast:some hs            0.0942329896 -1.555924e-02  2.040252e-01 0.2328753
+West:adv deg-Northeast:some hs               0.1042075877 -4.690423e-03  2.131056e-01 0.0840711
+Midwest:some hs-South:some hs               -0.0018222026 -1.157053e-01  1.120608e-01 1.0000000
+West:some hs-South:some hs                   0.0541447244 -4.224436e-02  1.505338e-01 0.9529298
+Northeast:HS diploma-South:some hs           0.1724520373  9.668998e-02  2.482141e-01 0.0000000
+South:HS diploma-South:some hs               0.0967492260  2.536617e-02  1.681323e-01 0.0001708
+Midwest:HS diploma-South:some hs             0.1154448782  4.188621e-02  1.890035e-01 0.0000021
+West:HS diploma-South:some hs                0.1328952046  6.049445e-02  2.052960e-01 0.0000000
+Northeast:some coll-South:some hs            0.2136359147  1.403746e-01  2.868972e-01 0.0000000
+South:some coll-South:some hs                0.1546021918  8.485298e-02  2.243514e-01 0.0000000
+Midwest:some coll-South:some hs              0.1553046257  8.407502e-02  2.265342e-01 0.0000000
+West:some coll-South:some hs                 0.1782011528  1.086022e-01  2.478001e-01 0.0000000
+Northeast:assoc deg-South:some hs            0.2197501667  1.426637e-01  2.968367e-01 0.0000000
+South:assoc deg-South:some hs                0.1670078467  9.495220e-02  2.390635e-01 0.0000000
+Midwest:assoc deg-South:some hs              0.1661431654  9.232130e-02  2.399650e-01 0.0000000
+West:assoc deg-South:some hs                 0.1883653876  1.165860e-01  2.601448e-01 0.0000000
+Northeast:bach deg-South:some hs             0.2831598135  2.122185e-01  3.541011e-01 0.0000000
+South:bach deg-South:some hs                 0.2514291446  1.822344e-01  3.206239e-01 0.0000000
+Midwest:bach deg-South:some hs               0.2449019969  1.747239e-01  3.150801e-01 0.0000000
+West:bach deg-South:some hs                  0.2572627477  1.881169e-01  3.264086e-01 0.0000000
+Northeast:adv deg-South:some hs              0.3081128624  2.371520e-01  3.790738e-01 0.0000000
+South:adv deg-South:some hs                  0.2812879837  2.119774e-01  3.505986e-01 0.0000000
+Midwest:adv deg-South:some hs                0.2835019006  2.126449e-01  3.543589e-01 0.0000000
+West:adv deg-South:some hs                   0.2934764987  2.240132e-01  3.629398e-01 0.0000000
+West:some hs-Midwest:some hs                 0.0559669270 -5.868559e-02  1.706194e-01 0.9921823
+Northeast:HS diploma-Midwest:some hs         0.1742742398  7.632408e-02  2.722244e-01 0.0000000
+South:HS diploma-Midwest:some hs             0.0985714286  3.967597e-03  1.931753e-01 0.0289706
+Midwest:HS diploma-Midwest:some hs           0.1172670807  2.101106e-02  2.135231e-01 0.0019920
+West:HS diploma-Midwest:some hs              0.1347174072  3.934334e-02  2.300915e-01 0.0000562
+Northeast:some coll-Midwest:some hs          0.2154581172  1.194291e-01  3.114871e-01 0.0000000
+South:some coll-Midwest:some hs              0.1564243943  6.304722e-02  2.498016e-01 0.0000002
+Midwest:some coll-Midwest:some hs            0.1571268283  6.263873e-02  2.516149e-01 0.0000002
+West:some coll-Midwest:some hs               0.1800233554  8.675839e-02  2.732883e-01 0.0000000
+Northeast:assoc deg-Midwest:some hs          0.2215723693  1.225942e-01  3.205505e-01 0.0000000
+South:assoc deg-Midwest:some hs              0.1688300493  7.371769e-02  2.639424e-01 0.0000000
+Midwest:assoc deg-Midwest:some hs            0.1679653680  7.150806e-02  2.644227e-01 0.0000000
+West:assoc deg-Midwest:some hs               0.1901875902  9.528436e-02  2.850908e-01 0.0000000
+Northeast:bach deg-Midwest:some hs           0.2849820160  1.907110e-01  3.792530e-01 0.0000000
+South:bach deg-Midwest:some hs               0.2532513472  1.602876e-01  3.462151e-01 0.0000000
+Midwest:bach deg-Midwest:some hs             0.2467241994  1.530262e-01  3.404222e-01 0.0000000
+West:bach deg-Midwest:some hs                0.2590849503  1.661576e-01  3.520123e-01 0.0000000
+Northeast:adv deg-Midwest:some hs            0.3099350649  2.156494e-01  4.042208e-01 0.0000000
+South:adv deg-Midwest:some hs                0.2831101863  1.900602e-01  3.761602e-01 0.0000000
+Midwest:adv deg-Midwest:some hs              0.2853241032  1.911166e-01  3.795316e-01 0.0000000
+West:adv deg-Midwest:some hs                 0.2952987013  2.021349e-01  3.884625e-01 0.0000000
+Northeast:HS diploma-West:some hs            0.1183073129  4.139345e-02  1.952212e-01 0.0000041
+South:HS diploma-West:some hs                0.0426045016 -2.999985e-02  1.152089e-01 0.9245951
+Midwest:HS diploma-West:some hs              0.0613001538 -1.344428e-02  1.360446e-01 0.3220185
+West:HS diploma-West:some hs                 0.0787504802  5.145310e-03  1.523557e-01 0.0197218
+Northeast:some coll-West:some hs             0.1594911903  8.503936e-02  2.339430e-01 0.0000000
+South:some coll-West:some hs                 0.1004574674  2.945884e-02  1.714561e-01 0.0000536
+Midwest:some coll-West:some hs               0.1011599013  2.870641e-02  1.736134e-01 0.0000775
+West:some coll-West:some hs                  0.1240564284  5.320545e-02  1.949074e-01 0.0000000
+Northeast:assoc deg-West:some hs             0.1656054423  8.738663e-02  2.438243e-01 0.0000000
+South:assoc deg-West:some hs                 0.1128631223  3.959738e-02  1.861289e-01 0.0000039
+Midwest:assoc deg-West:some hs               0.1119984410  3.699498e-02  1.870019e-01 0.0000108
+West:assoc deg-West:some hs                  0.1342206632  6.122661e-02  2.072147e-01 0.0000000
+Northeast:bach deg-West:some hs              0.2290150891  1.568450e-01  3.011852e-01 0.0000000
+South:bach deg-West:some hs                  0.1972844202  1.268305e-01  2.677384e-01 0.0000000
+Midwest:bach deg-West:some hs                0.1907572725  1.193372e-01  2.621773e-01 0.0000000
+West:bach deg-West:some hs                   0.2031180233  1.327120e-01  2.735240e-01 0.0000000
+Northeast:adv deg-West:some hs               0.2539681380  1.817788e-01  3.261575e-01 0.0000000
+South:adv deg-West:some hs                   0.2271432594  1.565755e-01  2.977110e-01 0.0000000
+Midwest:adv deg-West:some hs                 0.2293571762  1.572700e-01  3.014444e-01 0.0000000
+West:adv deg-West:some hs                    0.2393317743  1.686140e-01  3.100496e-01 0.0000000
+South:HS diploma-Northeast:HS diploma       -0.0757028112 -1.171808e-01 -3.422479e-02 0.0000000
+Midwest:HS diploma-Northeast:HS diploma     -0.0570071591 -1.021266e-01 -1.188772e-02 0.0009168
+West:HS diploma-Northeast:HS diploma        -0.0395568326 -8.276279e-02  3.649127e-03 0.1328774
+Northeast:some coll-Northeast:HS diploma     0.0411838774 -3.449174e-03  8.581693e-02 0.1231059
+South:some coll-Northeast:HS diploma        -0.0178498455 -5.644827e-02  2.074858e-02 0.9964819
+Midwest:some coll-Northeast:HS diploma      -0.0171474115 -5.836079e-02  2.406597e-02 0.9993678
+West:some coll-Northeast:HS diploma          0.0057491156 -3.257705e-02  4.407528e-02 1.0000000
+Northeast:assoc deg-Northeast:HS diploma     0.0472981295 -3.369582e-03  9.796584e-02 0.1095088
+South:assoc deg-Northeast:HS diploma        -0.0054441906 -4.806933e-02  3.718095e-02 1.0000000
+Midwest:assoc deg-Northeast:HS diploma      -0.0063088719 -5.185614e-02  3.923840e-02 1.0000000
+West:assoc deg-Northeast:HS diploma          0.0159133504 -2.624309e-02  5.806979e-02 0.9998895
+Northeast:bach deg-Northeast:HS diploma      0.1107077762  6.999467e-02  1.514209e-01 0.0000000
+South:bach deg-Northeast:HS diploma          0.0789771074  4.138994e-02  1.165643e-01 0.0000000
+Midwest:bach deg-Northeast:HS diploma        0.0724499596  3.308176e-02  1.118182e-01 0.0000000
+West:bach deg-Northeast:HS diploma           0.0848107105  4.731352e-02  1.223079e-01 0.0000000
+Northeast:adv deg-Northeast:HS diploma       0.1356608251  9.491363e-02  1.764080e-01 0.0000000
+South:adv deg-Northeast:HS diploma           0.1088359465  7.103591e-02  1.466360e-01 0.0000000
+Midwest:adv deg-Northeast:HS diploma         0.1110498634  7.048392e-02  1.516158e-01 0.0000000
+West:adv deg-Northeast:HS diploma            0.1210244615  8.294510e-02  1.591038e-01 0.0000000
+Midwest:HS diploma-South:HS diploma          0.0186956522 -1.860601e-02  5.599732e-02 0.9886943
+West:HS diploma-South:HS diploma             0.0361459786  1.183065e-03  7.110889e-02 0.0322864
+Northeast:some coll-South:HS diploma         0.1168866887  8.017484e-02  1.535985e-01 0.0000000
+South:some coll-South:HS diploma             0.0578529657  2.877567e-02  8.693026e-02 0.0000000
+Midwest:some coll-South:HS diploma           0.0585553997  2.608706e-02  9.102374e-02 0.0000000
+West:some coll-South:HS diploma              0.0814519268  5.273703e-02  1.101668e-01 0.0000000
+Northeast:assoc deg-South:HS diploma         0.1230009407  7.915043e-02  1.668515e-01 0.0000000
+South:assoc deg-South:HS diploma             0.0702586207  3.601606e-02  1.045012e-01 0.0000000
+Midwest:assoc deg-South:HS diploma           0.0693939394  3.157590e-02  1.072120e-01 0.0000000
+West:assoc deg-South:HS diploma              0.0916161616  5.795884e-02  1.252735e-01 0.0000000
+Northeast:bach deg-South:HS diploma          0.1864105875  1.545797e-01  2.182415e-01 0.0000000
+South:bach deg-South:HS diploma              0.1546799186  1.269591e-01  1.824008e-01 0.0000000
+Midwest:bach deg-South:HS diploma            0.1481527708  1.180612e-01  1.782444e-01 0.0000000
+West:bach deg-South:HS diploma               0.1605135217  1.329148e-01  1.881122e-01 0.0000000
+Northeast:adv deg-South:HS diploma           0.2113636364  1.794891e-01  2.432381e-01 0.0000000
+South:adv deg-South:HS diploma               0.1845387577  1.565300e-01  2.125476e-01 0.0000000
+Midwest:adv deg-South:HS diploma             0.1867526746  1.551102e-01  2.183951e-01 0.0000000
+West:adv deg-South:HS diploma                0.1967272727  1.683426e-01  2.251119e-01 0.0000000
+West:HS diploma-Midwest:HS diploma           0.0174503264 -2.176373e-02  5.666439e-02 0.9980722
+Northeast:some coll-Midwest:HS diploma       0.0981910365  5.740995e-02  1.389721e-01 0.0000000
+South:some coll-Midwest:HS diploma           0.0391573136  5.086413e-03  7.322821e-02 0.0060846
+Midwest:some coll-Midwest:HS diploma         0.0398597475  2.852581e-03  7.686691e-02 0.0178223
+West:some coll-Midwest:HS diploma            0.0627562746  2.899412e-02  9.651842e-02 0.0000000
+Northeast:assoc deg-Midwest:HS diploma       0.1043052886  5.699562e-02  1.516150e-01 0.0000000
+South:assoc deg-Midwest:HS diploma           0.0515629685  1.298979e-02  9.013615e-02 0.0002426
+Midwest:assoc deg-Midwest:HS diploma         0.0506982872  8.918612e-03  9.247796e-02 0.0021593
+West:assoc deg-Midwest:HS diploma            0.0729205094  3.486591e-02  1.109751e-01 0.0000000
+Northeast:bach deg-Midwest:HS diploma        0.1677149353  1.312657e-01  2.041641e-01 0.0000000
+South:bach deg-Midwest:HS diploma            0.1359842664  1.030634e-01  1.689051e-01 0.0000000
+Midwest:bach deg-Midwest:HS diploma          0.1294571187  9.451656e-02  1.643977e-01 0.0000000
+West:bach deg-Midwest:HS diploma             0.1418178696  1.089998e-01  1.746360e-01 0.0000000
+Northeast:adv deg-Midwest:HS diploma         0.1926679842  1.561807e-01  2.291553e-01 0.0000000
+South:adv deg-Midwest:HS diploma             0.1658431056  1.326794e-01  1.990068e-01 0.0000000
+Midwest:adv deg-Midwest:HS diploma           0.1680570225  1.317723e-01  2.043418e-01 0.0000000
+West:adv deg-Midwest:HS diploma              0.1780316206  1.445499e-01  2.115133e-01 0.0000000
+Northeast:some coll-West:HS diploma          0.0807407101  4.208727e-02  1.193941e-01 0.0000000
+South:some coll-West:HS diploma              0.0217069871 -9.786145e-03  5.320012e-02 0.7054485
+Midwest:some coll-West:HS diploma            0.0224094211 -1.223912e-02  5.705796e-02 0.8155665
+West:some coll-West:HS diploma               0.0453059482  1.414710e-02  7.646480e-02 0.0000243
+Northeast:assoc deg-West:HS diploma          0.0868549621  4.136655e-02  1.323434e-01 0.0000000
+South:assoc deg-West:HS diploma              0.0341126421 -2.203761e-03  7.042905e-02 0.1026760
+Midwest:assoc deg-West:HS diploma            0.0332479608 -6.457611e-03  7.295353e-02 0.2795931
+West:assoc deg-West:HS diploma               0.0554701830  1.970506e-02  9.123530e-02 0.0000031
+ [ reached getOption("max.print") -- omitted 128 rows ]
+
+> Regression_2 <- lm(GOT_Shived ~ GENID_DESCRIBE * EEDUC)
+> summary(Regression_2)
+
+Call:
+lm(formula = GOT_Shived ~ GENID_DESCRIBE * EEDUC)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.95686  0.04841  0.08771  0.16711  0.63636 
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                0.78571    0.08606   9.130  < 2e-16 ***
+GENID_DESCRIBEmale                        -0.02622    0.08979  -0.292 0.770274    
+GENID_DESCRIBEfemale                      -0.08964    0.08896  -1.008 0.313671    
+GENID_DESCRIBEtransgender                 -0.42208    0.12974  -3.253 0.001141 ** 
+GENID_DESCRIBEother                       -0.24405    0.10829  -2.254 0.024220 *  
+EEDUCsome hs                              -0.26571    0.10749  -2.472 0.013437 *  
+EEDUCHS diploma                           -0.33117    0.08989  -3.684 0.000229 ***
+EEDUCsome coll                            -0.32195    0.08892  -3.621 0.000294 ***
+EEDUCassoc deg                            -0.40668    0.09079  -4.479 7.49e-06 ***
+EEDUCbach deg                             -0.34998    0.08793  -3.980 6.89e-05 ***
+EEDUCadv deg                              -0.33780    0.08813  -3.833 0.000127 ***
+GENID_DESCRIBEmale:EEDUCsome hs            0.23181    0.11173   2.075 0.038011 *  
+GENID_DESCRIBEfemale:EEDUCsome hs          0.25082    0.11076   2.265 0.023539 *  
+GENID_DESCRIBEtransgender:EEDUCsome hs     0.75922    0.18919   4.013 6.00e-05 ***
+GENID_DESCRIBEother:EEDUCsome hs           0.42405    0.14512   2.922 0.003477 ** 
+GENID_DESCRIBEmale:EEDUCHS diploma         0.34523    0.09366   3.686 0.000228 ***
+GENID_DESCRIBEfemale:EEDUCHS diploma       0.42343    0.09279   4.563 5.04e-06 ***
+GENID_DESCRIBEtransgender:EEDUCHS diploma  0.75325    0.14563   5.172 2.32e-07 ***
+GENID_DESCRIBEother:EEDUCHS diploma        0.54208    0.11606   4.671 3.00e-06 ***
+GENID_DESCRIBEmale:EEDUCsome coll          0.40013    0.09264   4.319 1.57e-05 ***
+GENID_DESCRIBEfemale:EEDUCsome coll        0.44822    0.09180   4.883 1.05e-06 ***
+GENID_DESCRIBEtransgender:EEDUCsome coll   0.86397    0.13889   6.221 4.98e-10 ***
+GENID_DESCRIBEother:EEDUCsome coll         0.62403    0.11347   5.499 3.82e-08 ***
+GENID_DESCRIBEmale:EEDUCassoc deg          0.50824    0.09456   5.375 7.68e-08 ***
+GENID_DESCRIBEfemale:EEDUCassoc deg        0.54349    0.09366   5.803 6.55e-09 ***
+GENID_DESCRIBEtransgender:EEDUCassoc deg   0.84305    0.15678   5.377 7.59e-08 ***
+GENID_DESCRIBEother:EEDUCassoc deg         0.70410    0.11728   6.004 1.94e-09 ***
+GENID_DESCRIBEmale:EEDUCbach deg           0.51791    0.09165   5.651 1.60e-08 ***
+GENID_DESCRIBEfemale:EEDUCbach deg         0.56619    0.09082   6.234 4.57e-10 ***
+GENID_DESCRIBEtransgender:EEDUCbach deg    0.92112    0.13933   6.611 3.84e-11 ***
+GENID_DESCRIBEother:EEDUCbach deg          0.63361    0.11259   5.628 1.83e-08 ***
+GENID_DESCRIBEmale:EEDUCadv deg            0.53517    0.09185   5.826 5.69e-09 ***
+GENID_DESCRIBEfemale:EEDUCadv deg          0.59331    0.09102   6.518 7.16e-11 ***
+GENID_DESCRIBEtransgender:EEDUCadv deg     0.73607    0.14022   5.249 1.53e-07 ***
+GENID_DESCRIBEother:EEDUCadv deg           0.56399    0.11271   5.004 5.63e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.322 on 69079 degrees of freedom
+Multiple R-squared:  0.06622,	Adjusted R-squared:  0.06576 
+F-statistic: 144.1 on 34 and 69079 DF,  p-value: < 2.2e-16
+
+> Anova(Regression_2)
+Anova Table (Type II tests)
+
+Response: GOT_Shived
+                     Sum Sq    Df F value    Pr(>F)    
+GENID_DESCRIBE        211.3     4 509.474 < 2.2e-16 ***
+EEDUC                 269.2     6 432.745 < 2.2e-16 ***
+GENID_DESCRIBE:EEDUC   19.9    24   7.986 < 2.2e-16 ***
+Residuals            7162.6 69079                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> TukeyHSD(aov(Regression_2))
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = Regression_2)
+
+$GENID_DESCRIBE
+                          diff         lwr          upr     p adj
+male-NA             0.44399853  0.41733503  0.470662031 0.0000000
+female-NA           0.42819134  0.40170904  0.454673637 0.0000000
+transgender-NA      0.38022516  0.31313182  0.447318497 0.0000000
+other-NA            0.34850633  0.30666465  0.390348017 0.0000000
+female-male        -0.01580719 -0.02273206 -0.008882318 0.0000000
+transgender-male   -0.06377337 -0.12580690 -0.001739849 0.0403834
+other-male         -0.09549220 -0.12861874 -0.062365648 0.0000000
+transgender-female -0.04796618 -0.10992204  0.013989672 0.2148791
+other-female       -0.07968500 -0.11266588 -0.046704133 0.0000000
+other-transgender  -0.03171882 -0.10163264  0.038194996 0.7293242
+
+$EEDUC
+                               diff           lwr        upr     p adj
+some hs-less than hs    -0.01636311 -0.0725406203 0.03981439 0.9784445
+HS diploma-less than hs  0.05977973  0.0117413345 0.10781812 0.0045579
+some coll-less than hs   0.10469759  0.0572136611 0.15218151 0.0000000
+assoc deg-less than hs   0.11747379  0.0693799309 0.16556765 0.0000000
+bach deg-less than hs    0.19130603  0.1439999044 0.23861216 0.0000000
+adv deg-less than hs     0.22468904  0.1773202170 0.27205786 0.0000000
+HS diploma-some hs       0.07614284  0.0433151923 0.10897048 0.0000000
+some coll-some hs        0.12106070  0.0890499122 0.15307148 0.0000000
+assoc deg-some hs        0.13383690  0.1009281403 0.16674567 0.0000000
+bach deg-some hs         0.20766914  0.1759226953 0.23941559 0.0000000
+adv deg-some hs          0.24105215  0.2092123566 0.27289194 0.0000000
+some coll-HS diploma     0.04491786  0.0316338445 0.05820188 0.0000000
+assoc deg-HS diploma     0.05769407  0.0423721423 0.07301599 0.0000000
+bach deg-HS diploma      0.13152631  0.1188925543 0.14416006 0.0000000
+adv deg-HS diploma       0.16490931  0.1520428034 0.17777582 0.0000000
+assoc deg-some coll      0.01277620 -0.0007070231 0.02625943 0.0768323
+bach deg-some coll       0.08660845  0.0762814035 0.09693549 0.0000000
+adv deg-some coll        0.11999145  0.1093809307 0.13060197 0.0000000
+bach deg-assoc deg       0.07383224  0.0609891865 0.08667530 0.0000000
+adv deg-assoc deg        0.10721525  0.0941431617 0.12028733 0.0000000
+adv deg-bach deg         0.03338300  0.0235988457 0.04316716 0.0000000
+
+$`GENID_DESCRIBE:EEDUC`
+                                                         diff           lwr           upr     p adj
+male:less than hs-NA:less than hs               -2.622061e-02 -0.3695539918  0.3171127622 1.0000000
+female:less than hs-NA:less than hs             -8.963585e-02 -0.4298038949  0.2505321862 1.0000000
+transgender:less than hs-NA:less than hs        -4.220779e-01 -0.9181605363  0.0740046922 0.2671588
+other:less than hs-NA:less than hs              -2.440476e-01 -0.6581107128  0.1700154747 0.9491749
+NA:some hs-NA:less than hs                      -2.657143e-01 -0.6767150641  0.1452864927 0.8595871
+male:some hs-NA:less than hs                    -6.012062e-02 -0.3952071831  0.2749659468 1.0000000
+female:some hs-NA:less than hs                  -1.045262e-01 -0.4381202470  0.2290679132 0.9999998
+transgender:some hs-NA:less than hs              7.142857e-02 -0.4985269597  0.6413841025 1.0000000
+other:some hs-NA:less than hs                   -8.571429e-02 -0.5147612228  0.3433326514 1.0000000
+NA:HS diploma-NA:less than hs                   -3.311688e-01 -0.6748649482  0.0125272859 0.0796021
+male:HS diploma-NA:less than hs                 -1.215592e-02 -0.3420288347  0.3177170002 1.0000000
+female:HS diploma-NA:less than hs                2.625385e-03 -0.3269248107  0.3321755802 1.0000000
+transgender:HS diploma-NA:less than hs           1.279421e-12 -0.4030194210  0.4030194210 1.0000000
+other:HS diploma-NA:less than hs                -3.313697e-02 -0.3851477493  0.3188738171 1.0000000
+NA:some coll-NA:less than hs                    -3.219462e-01 -0.6619558716  0.0180635321 0.0973674
+male:some coll-NA:less than hs                   5.195855e-02 -0.2775187933  0.3814358854 1.0000000
+female:some coll-NA:less than hs                 3.663961e-02 -0.2926918832  0.3659711078 1.0000000
+transgender:some coll-NA:less than hs            1.199461e-01 -0.2500352405  0.4899274238 0.9999996
+other:some coll-NA:less than hs                  5.803571e-02 -0.2851229574  0.4011943860 1.0000000
+NA:assoc deg-NA:less than hs                    -4.066820e-01 -0.7538255341 -0.0595385212 0.0037354
+male:assoc deg-NA:less than hs                   7.534007e-02 -0.2546639056  0.4053440387 1.0000000
+female:assoc deg-NA:less than hs                 4.717093e-02 -0.2823691198  0.3767109724 1.0000000
+transgender:assoc deg-NA:less than hs            1.428571e-02 -0.4432591813  0.4718306099 1.0000000
+other:assoc deg-NA:less than hs                  5.336617e-02 -0.3011870230  0.4079193711 1.0000000
+NA:bach deg-NA:less than hs                     -3.499776e-01 -0.6861848943 -0.0137703229 0.0285314
+male:bach deg-NA:less than hs                    1.417080e-01 -0.1876386922  0.4710547726 0.9997211
+female:bach deg-NA:less than hs                  1.265741e-01 -0.2026918464  0.4558400665 0.9999756
+transgender:bach deg-NA:less than hs             1.490683e-01 -0.2267492249  0.5248858709 0.9999507
+other:bach deg-NA:less than hs                   3.958692e-02 -0.3030724049  0.3822462431 1.0000000
+NA:adv deg-NA:less than hs                      -3.377976e-01 -0.6747647753 -0.0008304628 0.0483948
+male:adv deg-NA:less than hs                     1.711490e-01 -0.1582322807  0.5005302804 0.9913743
+female:adv deg-NA:less than hs                   1.658744e-01 -0.1634204060  0.4951691424 0.9947851
+transgender:adv deg-NA:less than hs             -2.380952e-02 -0.4037798779  0.3561608303 1.0000000
+other:adv deg-NA:less than hs                   -1.785714e-02 -0.3603577915  0.3246435058 1.0000000
+female:less than hs-male:less than hs           -6.341524e-02 -0.1938985664  0.0670680874 0.9971717
+transgender:less than hs-male:less than hs      -3.958573e-01 -0.7797968376 -0.0119177769 0.0328005
+other:less than hs-male:less than hs            -2.178270e-01 -0.4875673394  0.0519133309 0.3841805
+NA:some hs-male:less than hs                    -2.394937e-01 -0.5045092226  0.0255218809 0.1583983
+male:some hs-male:less than hs                  -3.390000e-02 -0.1504959244  0.0826959177 1.0000000
+female:some hs-male:less than hs                -7.830555e-02 -0.1905401861  0.0339290820 0.7297833
+transgender:some hs-male:less than hs            9.764919e-02 -0.3779145952  0.5732129677 1.0000000
+other:some hs-male:less than hs                 -5.949367e-02 -0.3517142674  0.2327269256 1.0000000
+NA:HS diploma-male:less than hs                 -3.049482e-01 -0.4443706811 -0.1655257515 0.0000000
+male:HS diploma-male:less than hs                1.406470e-02 -0.0865719978  0.1147013930 1.0000000
+female:HS diploma-male:less than hs              2.884600e-02 -0.0707277628  0.1284197619 1.0000000
+transgender:HS diploma-male:less than hs         2.622061e-02 -0.2262397910  0.2786810207 1.0000000
+other:HS diploma-male:less than hs              -6.916351e-03 -0.1657344683  0.1519017657 1.0000000
+NA:some coll-male:less than hs                  -2.957256e-01 -0.4257955366 -0.1656555733 0.0000000
+male:some coll-male:less than hs                 7.817916e-02 -0.0211532102  0.1775115319 0.4466547
+female:some coll-male:less than hs               6.286023e-02 -0.0359873158  0.1617077700 0.8807410
+transgender:some coll-male:less than hs          1.461667e-01 -0.0492758400  0.3416092529 0.5726792
+other:some coll-male:less than hs                8.425633e-02 -0.0538359471  0.2223486053 0.9235083
+NA:assoc deg-male:less than hs                  -3.804614e-01 -0.5281780905 -0.2327447352 0.0000000
+male:assoc deg-male:less than hs                 1.015607e-01  0.0004952349  0.2026261278 0.0468523
+female:assoc deg-male:less than hs               7.339154e-02 -0.0261486255  0.1729317077 0.6069509
+transgender:assoc deg-male:less than hs          4.050633e-02 -0.2921480475  0.3731607057 1.0000000
+other:assoc deg-male:less than hs                7.958679e-02 -0.0847895243  0.2439631021 0.9973531
+NA:bach deg-male:less than hs                   -3.237570e-01 -0.4435357137 -0.2039782738 0.0000000
+male:bach deg-male:less than hs                  1.679287e-01  0.0690303590  0.2668269511 0.0000000
+female:bach deg-male:less than hs                1.527947e-01  0.0541657592  0.2514236905 0.0000018
+transgender:bach deg-male:less than hs           1.752889e-01 -0.0309886231  0.3815664987 0.2697134
+other:bach deg-male:less than hs                 6.580753e-02 -0.0710391508  0.2026542187 0.9976543
+NA:adv deg-male:less than hs                    -3.115770e-01 -0.4334723167 -0.1896816917 0.0000000
+male:adv deg-male:less than hs                   1.973696e-01  0.0983563288  0.2963829006 0.0000000
+female:adv deg-male:less than hs                 1.920950e-01  0.0933698540  0.2908201120 0.0000000
+transgender:adv deg-male:less than hs            2.411091e-03 -0.2113389330  0.2161611151 1.0000000
+other:adv deg-male:less than hs                  8.363472e-03 -0.1280854091  0.1448123531 1.0000000
+transgender:less than hs-female:less than hs    -3.324421e-01 -0.7135536669  0.0486695314 0.2182570
+other:less than hs-female:less than hs          -1.544118e-01 -0.4201114757  0.1112879463 0.9573876
+NA:some hs-female:less than hs                  -1.760784e-01 -0.4369801958  0.0848233331 0.7928031
+male:some hs-female:less than hs                 2.951524e-02 -0.0774010714  0.1364315438 1.0000000
+female:some hs-female:less than hs              -1.489031e-02 -0.1170328654  0.0872522403 1.0000000
+transgender:some hs-female:less than hs          1.610644e-01 -0.3122192083  0.6343480598 0.9999987
+other:some hs-female:less than hs                3.921569e-03 -0.2845734314  0.2924165687 1.0000000
+NA:HS diploma-female:less than hs               -2.415330e-01 -0.3729677961 -0.1100981576 0.0000000
+male:HS diploma-female:less than hs              7.747994e-02 -0.0117626115  0.1667224858 0.2270956
+female:HS diploma-female:less than hs            9.226124e-02  0.0042190778  0.1803034004 0.0258357
+transgender:HS diploma-female:less than hs       8.963585e-02 -0.1585027048  0.3377744135 0.9999943
+other:HS diploma-female:less than hs             5.649889e-02 -0.0953552600  0.2083530364 0.9999885
+NA:some coll-female:less than hs                -2.323103e-01 -0.3537791928 -0.1108414381 0.0000000
+male:some coll-female:less than hs               1.415944e-01  0.0538253400  0.2293634608 0.0000004
+female:some coll-female:less than hs             1.262755e-01  0.0390554875  0.2134954458 0.0000179
+transgender:some coll-female:less than hs        2.095819e-01  0.0197549801  0.3994089119 0.0111615
+other:some coll-female:less than hs              1.476716e-01  0.0176486292  0.2776945080 0.0067519
+NA:assoc deg-female:less than hs                -3.170462e-01 -0.4572485445 -0.1768438022 0.0000000
+male:assoc deg-female:less than hs               1.649759e-01  0.0752501582  0.2547016836 0.0000000
+female:assoc deg-female:less than hs             1.368068e-01  0.0488026171  0.2248109441 0.0000016
+transgender:assoc deg-female:less than hs        1.039216e-01 -0.2254648644  0.4333080017 0.9999998
+other:assoc deg-female:less than hs              1.430020e-01 -0.0146560205  0.3006600773 0.1528259
+NA:bach deg-female:less than hs                 -2.603418e-01 -0.3707203291 -0.1499631794 0.0000000
+male:bach deg-female:less than hs                2.313439e-01  0.1440664004  0.3186213887 0.0000000
+female:bach deg-female:less than hs              2.162100e-01  0.1292377798  0.3031821490 0.0000000
+transgender:bach deg-female:less than hs         2.387042e-01  0.0377392049  0.4396691498 0.0028300
+other:bach deg-female:less than hs               1.292228e-01  0.0005234993  0.2579220476 0.0473747
+NA:adv deg-female:less than hs                  -2.481618e-01 -0.3608336566 -0.1354898728 0.0000000
+male:adv deg-female:less than hs                 2.607849e-01  0.1733770810  0.3481926273 0.0000000
+female:adv deg-female:less than hs               2.555102e-01  0.1684290011  0.3425914440 0.0000000
+transgender:adv deg-female:less than hs          6.582633e-02 -0.1428014739  0.2744541350 0.9999998
+other:adv deg-female:less than hs                7.177871e-02 -0.0564974951  0.2000549181 0.9741882
+other:less than hs-transgender:less than hs      1.780303e-01 -0.2702776278  0.6263382338 0.9999494
+NA:some hs-transgender:less than hs              1.563636e-01 -0.2891174464  0.6018447191 0.9999972
+male:some hs-transgender:less than hs            3.619573e-01 -0.0146257032  0.7385403110 0.0819694
+female:some hs-transgender:less than hs          3.175518e-01 -0.0577038450  0.6928073554 0.2784505
+transgender:some hs-transgender:less than hs     4.935065e-01 -0.1017926436  1.0888056306 0.3232712
+other:some hs-transgender:less than hs           3.363636e-01 -0.1258192597  0.7985465325 0.6375414
+NA:HS diploma-transgender:less than hs           9.090909e-02 -0.2933548498  0.4751730316 1.0000000
+male:HS diploma-transgender:less than hs         4.099220e-01  0.0379705337  0.7818734760 0.0115106
+female:HS diploma-transgender:less than hs       4.247033e-01  0.0530380185  0.7963685952 0.0060284
+transgender:HS diploma-transgender:less than hs  4.220779e-01 -0.0160503798  0.8602062240 0.0797836
+other:HS diploma-transgender:less than hs        3.889410e-01 -0.0027774974  0.7806594093 0.0548761
+NA:some coll-transgender:less than hs            1.001318e-01 -0.2808385255  0.4811020301 1.0000000
+male:some coll-transgender:less than hs          4.740365e-01  0.1024357787  0.8456371575 0.0005815
+female:some coll-transgender:less than hs        4.587175e-01  0.0872461503  0.8301889184 0.0012334
+transgender:some coll-transgender:less than hs   5.420240e-01  0.1340804620  0.9499675654 0.0002096
+other:some coll-transgender:less than hs         4.801136e-01  0.0963303262  0.8638969465 0.0009193
+NA:assoc deg-transgender:less than hs            1.539589e-02 -0.3719545532  0.4027463420 1.0000000
+male:assoc deg-transgender:less than hs          4.974180e-01  0.1253502839  0.8694856933 0.0001782
+female:assoc deg-transgender:less than hs        4.692488e-01  0.0975925593  0.8409051374 0.0007423
+transgender:assoc deg-transgender:less than hs   4.363636e-01 -0.0523889459  0.9251162186 0.1775974
+other:assoc deg-transgender:less than hs         4.754441e-01  0.0814393693  0.8694488230 0.0020374
+NA:bach deg-transgender:less than hs             7.210031e-02 -0.3054802662  0.4496808932 1.0000000
+male:bach deg-transgender:less than hs           5.637860e-01  0.1923010697  0.9352708548 0.0000038
+female:bach deg-transgender:less than hs         5.486520e-01  0.1772387511  0.9200653131 0.0000094
+transgender:bach deg-transgender:less than hs    5.711462e-01  0.1579022680  0.9843902221 0.0000715
+other:bach deg-transgender:less than hs          4.616648e-01  0.0783279560  0.8450017264 0.0021236
+NA:adv deg-transgender:less than hs              8.428030e-02 -0.2939770427  0.4625376488 1.0000000
+male:adv deg-transgender:less than hs            5.932269e-01  0.2217113998  0.9647424441 0.0000006
+female:adv deg-transgender:less than hs          5.879523e-01  0.2165134615  0.9593911190 0.0000008
+transgender:adv deg-transgender:less than hs     3.982684e-01 -0.0187558519  0.8152926484 0.0883182
+other:adv deg-transgender:less than hs           4.042208e-01  0.0210257250  0.7874158334 0.0233741
+NA:some hs-other:less than hs                   -2.166667e-02 -0.3735241385  0.3301908052 1.0000000
+male:some hs-other:less than hs                  1.839270e-01 -0.0752352005  0.4430892023 0.6939663
+female:some hs-other:less than hs                1.395215e-01 -0.1177081163  0.3967510206 0.9834194
+transgender:some hs-other:less than hs           3.154762e-01 -0.2134201586  0.8443725396 0.9412435
+other:some hs-other:less than hs                 1.583333e-01 -0.2144445024  0.5311111691 0.9997863
+NA:HS diploma-other:less than hs                -8.712121e-02 -0.3573231024  0.1830806782 0.9999997
+male:HS diploma-other:less than hs               2.318917e-01 -0.0204932864  0.4842766901 0.1343909
+female:HS diploma-other:less than hs             2.466730e-01 -0.0052900331  0.4986360407 0.0656249
+transgender:HS diploma-other:less than hs        2.440476e-01 -0.0984530296  0.5865482677 0.6852507
+other:HS diploma-other:less than hs              2.109107e-01 -0.0697913815  0.4916126873 0.5613151
+NA:some coll-other:less than hs                 -7.789855e-02 -0.3433955149  0.1875984134 1.0000000
+male:some coll-other:less than hs                2.960062e-01  0.0441384264  0.5478739037 0.0035065
+female:some coll-other:less than hs              2.806872e-01  0.0290103063  0.5323641563 0.0093656
+transgender:some coll-other:less than hs         3.639937e-01  0.0610610007  0.6669264207 0.0022289
+other:some coll-other:less than hs               3.020833e-01  0.0325654034  0.5716012633 0.0085761
+NA:assoc deg-other:less than hs                 -1.626344e-01 -0.4372079956  0.1119391784 0.9460068
+male:assoc deg-other:less than hs                3.193877e-01  0.0668314299  0.5719439413 0.0007148
+female:assoc deg-other:less than hs              2.912185e-01  0.0392687833  0.5431683074 0.0048545
+transgender:assoc deg-other:less than hs         2.583333e-01 -0.1469188994  0.6635855660 0.8778066
+other:assoc deg-other:less than hs               2.974138e-01  0.0135299961  0.5812975901 0.0259324
+NA:bach deg-other:less than hs                  -1.059300e-01 -0.3665396202  0.1546796411 0.9999158
+male:bach deg-other:less than hs                 3.857557e-01  0.1340587964  0.6374525222 0.0000027
+female:bach deg-other:less than hs               3.706217e-01  0.1190305713  0.6222128869 0.0000103
+transgender:bach deg-other:less than hs          3.931159e-01  0.0830822826  0.7031496014 0.0006715
+other:bach deg-other:less than hs                2.836345e-01  0.0147526813  0.5525163950 0.0233750
+NA:adv deg-other:less than hs                   -9.375000e-02 -0.3553391914  0.1678391914 0.9999953
+male:adv deg-other:less than hs                  4.151966e-01  0.1634545513  0.6669386865 0.0000002
+female:adv deg-other:less than hs                4.099220e-01  0.1582931158  0.6615508587 0.0000003
+transgender:adv deg-other:less than hs           2.202381e-01 -0.0948166787  0.5352928692 0.7258299
+other:adv deg-other:less than hs                 2.261905e-01 -0.0424891378  0.4948700902 0.2894521
+male:some hs-NA:some hs                          2.055937e-01 -0.0486472436  0.4598345787 0.3808962
+female:some hs-NA:some hs                        1.611881e-01 -0.0910824605  0.4134586981 0.8749174
+transgender:some hs-NA:some hs                   3.371429e-01 -0.1893595098  0.8636452240 0.8721675
+other:some hs-NA:some hs                         1.800000e-01 -0.1893734007  0.5493734007 0.9970354
+NA:HS diploma-NA:some hs                        -6.545455e-02 -0.3309398667  0.2000307758 1.0000000
+male:HS diploma-NA:some hs                       2.535584e-01  0.0062294851  0.5008872519 0.0355765
+female:HS diploma-NA:some hs                     2.683397e-01  0.0214413792  0.5152379618 0.0145439
+transgender:HS diploma-NA:some hs                2.657143e-01 -0.0730778167  0.6045063881 0.4552798
+other:HS diploma-NA:some hs                      2.325773e-01 -0.0435875341  0.5087421733 0.2886656
+NA:some coll-NA:some hs                         -5.623188e-02 -0.3169271703  0.2044634021 1.0000000
+male:some coll-NA:some hs                        3.176728e-01  0.0708717944  0.5644738691 0.0004679
+female:some coll-NA:some hs                      3.023539e-01  0.0557475947  0.5489602013 0.0014452
+transgender:some coll-NA:some hs                 3.856604e-01  0.0869270162  0.6843937385 0.0004351
+other:some coll-NA:some hs                       3.237500e-01  0.0589608219  0.5885391781 0.0015355
+NA:assoc deg-NA:some hs                         -1.409677e-01 -0.4109011577  0.1289656739 0.9906629
+male:assoc deg-NA:some hs                        3.410544e-01  0.0935507027  0.5885580019 0.0000778
+female:assoc deg-NA:some hs                      3.128852e-01  0.0660004679  0.5597699561 0.0006796
+transgender:assoc deg-NA:some hs                 2.800000e-01 -0.1221228250  0.6821228250 0.7338262
+other:assoc deg-NA:some hs                       3.190805e-01  0.0396821698  0.5984787498 0.0060954
+NA:bach deg-NA:some hs                          -8.426332e-02 -0.3399795208  0.1714528750 0.9999994
+male:bach deg-NA:some hs                         4.074223e-01  0.1607956747  0.6540489771 0.0000002
+female:bach deg-NA:some hs                       3.922884e-01  0.1457696237  0.6388071678 0.0000007
+transgender:bach deg-NA:some hs                  4.147826e-01  0.1088508120  0.7207144054 0.0001221
+other:bach deg-NA:some hs                        3.053012e-01  0.0411594867  0.5694429229 0.0048574
+NA:adv deg-NA:some hs                           -7.208333e-02 -0.3287977648  0.1846310981 1.0000000
+male:adv deg-NA:some hs                          4.368633e-01  0.1901905005  0.6835360706 0.0000000
+female:adv deg-NA:some hs                        4.315887e-01  0.1850313924  0.6781459154 0.0000000
+transgender:adv deg-NA:some hs                   2.419048e-01 -0.0691143772  0.5529239010 0.4759310
+other:adv deg-NA:some hs                         2.478571e-01 -0.0160787002  0.5117929859 0.1067077
+female:some hs-male:some hs                     -4.440555e-02 -0.1280823754  0.0392712779 0.9880358
+transgender:some hs-male:some hs                 1.315492e-01 -0.3380954723  0.6011938515 1.0000000
+other:some hs-male:some hs                      -2.559367e-02 -0.3080791986  0.2568918635 1.0000000
+NA:HS diploma-male:some hs                      -2.710482e-01 -0.3887079849 -0.1533884411 0.0000000
+male:HS diploma-male:some hs                     4.796470e-02 -0.0193624311  0.1152918330 0.6856618
+female:HS diploma-male:some hs                   6.274600e-02 -0.0029817111  0.1284737169 0.0887340
+transgender:HS diploma-male:some hs              6.012062e-02 -0.1810047740  0.3012460104 1.0000000
+other:HS diploma-male:some hs                    2.698365e-02 -0.1131177132  0.1670850173 1.0000000
+NA:some coll-male:some hs                       -2.618256e-01 -0.3682370095 -0.1554140937 0.0000000
+male:some coll-male:some hs                      1.120792e-01  0.0467177216  0.1774406068 0.0000000
+female:some coll-male:some hs                    9.676023e-02  0.0321379821  0.1613824788 0.0000060
+transgender:some coll-male:some hs               1.800667e-01 -0.0004962631  0.3606296827 0.0518440
+other:some coll-male:some hs                     1.181563e-01  0.0020758647  0.2342368002 0.0393278
+NA:assoc deg-male:some hs                       -3.465614e-01 -0.4739404309 -0.2191823881 0.0000000
+male:assoc deg-male:some hs                      1.354607e-01  0.0674943497  0.2034270198 0.0000000
+female:assoc deg-male:some hs                    1.072915e-01  0.0416147372  0.1729683517 0.0000002
+transgender:assoc deg-male:some hs               7.440633e-02 -0.2497296460  0.3985423109 1.0000000
+other:assoc deg-male:some hs                     1.134868e-01 -0.0328852358  0.2598588202 0.4837532
+NA:bach deg-male:some hs                        -2.898570e-01 -0.3834098632 -0.1963041177 0.0000000
+male:bach deg-male:some hs                       2.018287e-01  0.1371288036  0.2665285131 0.0000000
+female:bach deg-male:some hs                     1.866947e-01  0.1224073180  0.2509821384 0.0000000
+transgender:bach deg-male:some hs                2.091889e-01  0.0169504685  0.4014274138 0.0142526
+other:bach deg-male:some hs                      9.970754e-02 -0.0148883325  0.2143034070 0.2230041
+NA:adv deg-male:some hs                         -2.776770e-01 -0.3739249382 -0.1814290635 0.0000000
+male:adv deg-male:some hs                        2.312696e-01  0.1663941294  0.2961451066 0.0000000
+female:adv deg-male:some hs                      2.259950e-01  0.1615601407  0.2904298321 0.0000000
+transgender:adv deg-male:some hs                 3.631109e-02 -0.1639244445  0.2365466332 1.0000000
+other:adv deg-male:some hs                       4.226348e-02 -0.0718570548  0.1563840054 0.9999897
+transgender:some hs-female:some hs               1.759547e-01 -0.2926262181  0.6445356948 0.9999858
+other:some hs-female:some hs                     1.881188e-02 -0.2619016374  0.2995253998 1.0000000
+NA:HS diploma-female:some hs                    -2.266427e-01 -0.3399820934 -0.1133032351 0.0000000
+male:HS diploma-female:some hs                   9.237025e-02  0.0329148296  0.1518256697 0.0000017
+female:HS diploma-female:some hs                 1.071516e-01  0.0495135724  0.1647895309 0.0000000
+transgender:HS diploma-female:some hs            1.045262e-01 -0.1345208139  0.3435731477 0.9996134
+other:HS diploma-female:some hs                  7.138920e-02 -0.0651040108  0.2078824124 0.9904388
+NA:some coll-female:some hs                     -2.174200e-01 -0.3190339913 -0.1158060144 0.0000000
+male:some coll-female:some hs                    1.564847e-01  0.0992647649  0.2137046609 0.0000000
+female:some coll-female:some hs                  1.411658e-01  0.0847916783  0.1975398800 0.0000000
+transgender:some coll-female:some hs             2.244723e-01  0.0466943312  0.4022501859 0.0007414
+other:some coll-female:some hs                   1.625619e-01  0.0508628245  0.2742609378 0.0000152
+NA:assoc deg-female:some hs                     -3.021559e-01 -0.4255552909 -0.1787564306 0.0000000
+male:assoc deg-female:some hs                    1.798662e-01  0.1196879403  0.2400445267 0.0000000
+female:assoc deg-female:some hs                  1.516971e-01  0.0941171724  0.2092770140 0.0000000
+transgender:assoc deg-female:some hs             1.188119e-01 -0.2037809532  0.4414047155 0.9999910
+other:assoc deg-female:some hs                   1.578923e-01  0.0149700724  0.3008146095 0.0110450
+NA:bach deg-female:some hs                      -2.454514e-01 -0.3335090607 -0.1573938227 0.0000000
+male:bach deg-female:some hs                     2.462342e-01  0.1897711619  0.3026972523 0.0000000
+female:bach deg-female:some hs                   2.311003e-01  0.1751103191  0.2870902348 0.0000000
+transgender:bach deg-female:some hs              2.535945e-01  0.0639695057  0.4432194741 0.0001766
+other:bach deg-female:some hs                    1.441131e-01  0.0339576611  0.2542685109 0.0003122
+NA:adv deg-female:some hs                       -2.332715e-01 -0.3241871808 -0.1423557235 0.0000000
+male:adv deg-female:some hs                      2.756752e-01  0.2190109515  0.3323393820 0.0000000
+female:adv deg-female:some hs                    2.704005e-01  0.2142413541  0.3265597161 0.0000000
+transgender:adv deg-female:some hs               8.071664e-02 -0.1170111377  0.2784444239 0.9999076
+other:adv deg-female:some hs                     8.666902e-02 -0.0229918152  0.1963298633 0.4363918
+other:some hs-transgender:some hs               -1.571429e-01 -0.6978501501  0.3835644359 1.0000000
+NA:HS diploma-transgender:some hs               -4.025974e-01 -0.8784231305  0.0732283253 0.2787624
+male:HS diploma-transgender:some hs             -8.358449e-02 -0.5495235878  0.3823546105 1.0000000
+female:HS diploma-transgender:some hs           -6.880319e-02 -0.5345138628  0.3969074894 1.0000000
+transgender:HS diploma-transgender:some hs      -7.142857e-02 -0.5917244067  0.4488672638 1.0000000
+other:HS diploma-transgender:some hs            -1.045655e-01 -0.5864313840  0.3773003089 1.0000000
+ [ reached getOption("max.print") -- omitted 345 rows ]
+
+> #I will be reviewing this line of output "female:less than hs-male:less than hs           -6.341524e-02 -0.1938985664  0.0670680874 0.9971717"
+> #My level of confidance is .99 which would yeild a level of significance of .01.  My P value is 1 which is greater than my level of
+> #of significance which mean we would fail to reject the Null Hypothese,resulting in favoring the Null Hypothese which would mean
+> #there is no difference in the vaccination rate between female:less than hs-male:less than hs.
+> summary(Household_Pulse_data)
+        RHISPANIC       RRACE                EEDUC               MS        EGENID_BIRTH       GENID_DESCRIBE 
+ Not Hispanic:62660   White:56938   less than hs:  411   NA       :  881   male  :27592   NA         : 1131  
+ Hispanic    : 6454   Black: 5412   some hs     :  936   married  :40036   female:41522   male       :26796  
+                      Asian: 3561   HS diploma  : 7857   widowed  : 3872                  female     :40263  
+                      Other: 3203   some coll   :14596   divorced :10310                  transgender:  202  
+                                    assoc deg   : 7508   separated: 1214                  other      :  722  
+                                    bach deg    :20075   never    :12801                                     
+                                    adv deg     :17731                                                       
+      SEXUAL_ORIENTATION                      KIDS_LT5Y                         KIDS_5_11Y   
+ NA            : 1506    NA                        :62342   NA                       :58467  
+ gay or lesbian: 2343    Yes children under 5 in HH: 6772   Yes children 5 - 11 in HH:10647  
+ straight      :61238                                                                        
+ bisexual      : 2288                                                                        
+ something else:  871                                                                        
+ dont know     :  868                                                                        
+                                                                                             
+                     KIDS_12_17Y                                 ENROLLNONE                  RECVDVACC    
+ NA                        :58046   NA                                :64285   NA                 :  851  
+ Yes children 12 - 17 in HH:11068   children not in any type of school: 4829   yes got vaxx       :60326  
+                                                                               no did not get vaxx: 7937  
+                                                                                                          
+                                                                                                          
+                                                                                                          
+                                                                                                          
+                      DOSESRV                          GETVACRV                                   KIDDOSES    
+ NA                       : 9105   NA                      :61159   NA                                :58318  
+ yes got all doses        :57762   definitely will get vaxx:  609   Yes kids got or will get all doses: 7135  
+ yes plan to get all doses: 1993   probably will get vaxx  :  731   no kids did not or will not       : 3661  
+ no will not get all doses:  254   unsure about vaxx       : 1584                                             
+                                   probably not            : 1599                                             
+                                   definitely not          : 3432                                             
+                                                                                                              
+                    KIDGETVAC                          HADCOVID                      WRKLOSSRV    
+ NA                      :65384   NA                       : 1363   NA                    : 1961  
+ definitely will get vaxx:  487   yes doctor told had covid: 9122   yes recent HH job loss: 8058  
+ probably will get vaxx  :  439   no did not               :58221   no recent HH job loss :59095  
+ unsure about vaxx       :  736   not sure                 :  408                                 
+ probably not            :  593                                                                   
+ definitely not          : 1036                                                                   
+ dont know yet           :  439                                                                   
+                          ANYWORK                     KINDWORK                RSNNOWRKRV   
+ NA                           : 2135   NA                 :30540   NA              :42659  
+ yes employment in last 7 days:39237   work for govt      : 6378   retired         :15024  
+ no employment in last 7 days :27742   work for private co:21370   other           : 4027  
+                                       work for nonprofit : 5055   sick or disabled: 1451  
+                                       self employed      : 4966   caring for kids : 1329  
+                                       work in family biz :  805   laid off        : 1164  
+                                                                   (Other)         : 3460  
+                                      CHLDCARE                              CURFOODSUF   
+ NA                                       :58419   NA                            : 6770  
+ yes impacts to childcare because pandemic: 2566   had enough food               :49234  
+ no                                       : 8129   had enough but not what wanted: 9947  
+                                                   sometimes not enough food     : 2486  
+                                                   often not enough food         :  677  
+                                                                                         
+                                                                                         
+                                               CHILDFOOD                                                ANXIOUS     
+ NA                                                 :64258   NA                                             : 7946  
+ often kids not eating enough because couldnt afford:  271   no anxiety over past 2 wks                     :26611  
+ sometimes kids not eating enough                   : 1191   several days anxiety over past 2 wks           :19794  
+ kids got enough food                               : 3394   more than half the days anxiety over past 2 wks: 6140  
+                                                             nearly every day anxiety                       : 8623  
+                                                                                                                    
+                                                                                                                    
+                                             WORRY                                 TENURE     
+ NA                                             : 8016   NA                           :11103  
+ no worry over past 2 wks                       :31876   housing owned free and clear :16738  
+ several days worried over past 2 wks           :17936   housing owned with mortgage  :28016  
+ more than half the days worried over past 2 wks: 4979   housing rented               :12579  
+ nearly every day worry                         : 6307   housing occupied without rent:  678  
+                                                                                              
+                                                                                              
+                                LIVQTRRV                RENTCUR                     MORTCUR     
+ live in detached 1 family          :41348   NA             :56572   NA                 :41200  
+ NA                                 :11336   current on rent:11239   current on mortgage:26462  
+ live in bldg w 5+ apts             : 6731   behind on rent : 1303   behind on mortgage : 1452  
+ live in 1 family attached to others: 4628                                                      
+ live in mobile home                : 1781                                                      
+ live in building with 3-4 apts     : 1737                                                      
+ (Other)                            : 1553                                                      
+                                        EVICT                                                FORCLOSE    
+ NA                                        :67859   NA                                           :67695  
+ very likely evicted in next 2 months      :  207   very likely forclosed in next 2 months       :   65  
+ somewhat likely evicted in next 2 months  :  377   somewhat likely forclosed in next 2 months   :  218  
+ not very likely evicted in next 2 months  :  345   not very likely forclosed in next 2 months   :  474  
+ not at all likely evicted in next 2 months:  326   not at all forclosed evicted in next 2 months:  662  
+                                                                                                         
+                                                                                                         
+           EST_ST                        PRIVHLTH                      PUBHLTH            REGION     
+ California   : 5359   has private health ins:46869   has public health ins:23346   Northeast:10478  
+ Texas        : 3766   no private health ins :11275   no public health ins :33381   South    :22680  
+ Florida      : 2728   NA                    :10970   NA                   :12387   Midwest  :13651  
+ Washington   : 2634                                                                West     :22305  
+ Massachusetts: 1965                                                                                 
+ Oregon       : 1934                                                                                 
+ (Other)      :50728                                                                                 
+                     INCOME      Num_kids_Pub_School Num_kids_Priv_School Num_kids_homeschool        Works_onsite  
+ NA                     :20335   Min.   :0.00        Min.   :0.00         Min.   :0.00        NA           : 6350  
+ HH income $75 - 99.9   :10117   1st Qu.:1.00        1st Qu.:0.00         1st Qu.:0.00        worked onsite:34918  
+ HH income $35k - 49.9  : 9330   Median :2.00        Median :1.00         Median :1.00        no           :27846  
+ HH income $50k - 74.9  : 7830   Mean   :1.71        Mean   :1.03         Mean   :0.87                             
+ HH income $150 - 199   : 6117   3rd Qu.:2.00        3rd Qu.:2.00         3rd Qu.:2.00                             
+ HH income $25k - $34.9k: 5805   Max.   :4.00        Max.   :2.00         Max.   :2.00                             
+ (Other)                : 9580   NA's   :55108       NA's   :66430        NA's   :67421                            
+          works_remote            Shop_in_store                   eat_in_restaurant
+ NA             : 8022   NA              : 6873   NA                       : 7217  
+ worked remotely:22863   shopped in store:53576   eat at restaurant indoors:32405  
+ no             :38229   no              : 8665   no                       :29492  
+                                                                                   
+                                                                                   
+                                                                                   
+                                                                                   
+> attach(Household_Pulse_data)
+The following objects are masked from Household_Pulse_data (pos = 4):
+
+    ANXIOUS, ANYWORK, CHILDFOOD, CHLDCARE, CURFOODSUF, DOSESRV, eat_in_restaurant, EEDUC, EGENID_BIRTH,
+    ENROLLNONE, EST_ST, EVICT, FORCLOSE, GENID_DESCRIBE, GETVACRV, HADCOVID, INCOME, KIDDOSES, KIDGETVAC,
+    KIDS_12_17Y, KIDS_5_11Y, KIDS_LT5Y, KINDWORK, LIVQTRRV, MORTCUR, MS, Num_kids_homeschool,
+    Num_kids_Priv_School, Num_kids_Pub_School, PRIVHLTH, PUBHLTH, RECVDVACC, REGION, RENTCUR, RHISPANIC, RRACE,
+    RSNNOWRKRV, SEXUAL_ORIENTATION, Shop_in_store, TENURE, Works_onsite, works_remote, WORRY, WRKLOSSRV
+
+The following objects are masked from Household_Pulse_data (pos = 5):
+
+    ANXIOUS, ANYWORK, CHILDFOOD, CHLDCARE, CURFOODSUF, DOSESRV, eat_in_restaurant, EEDUC, EGENID_BIRTH,
+    ENROLLNONE, EST_ST, EVICT, FORCLOSE, GENID_DESCRIBE, GETVACRV, HADCOVID, INCOME, KIDDOSES, KIDGETVAC,
+    KIDS_12_17Y, KIDS_5_11Y, KIDS_LT5Y, KINDWORK, LIVQTRRV, MORTCUR, MS, Num_kids_homeschool,
+    Num_kids_Priv_School, Num_kids_Pub_School, PRIVHLTH, PUBHLTH, RECVDVACC, REGION, RENTCUR, RHISPANIC, RRACE,
+    RSNNOWRKRV, SEXUAL_ORIENTATION, Shop_in_store, TENURE, Works_onsite, works_remote, WORRY, WRKLOSSRV
+
+> detach()
+> #Instead I created Subgroups from the orginal data set.
+> #This created new subgroup Variables in the Environment I can compare in a regression.
+> WhiteOUT <- Household_Pulse_data$RRACE == "White"
+> summary(RRACE)
+White Black Asian Other 
+56938  5412  3561  3203 
+> BlackOUT <- Household_Pulse_data$RRACE == "Black"
+> AsainOUT <- Household_Pulse_data$RRACE == "Asian"
+> #Now I have also created a variable to account specifially for Very Likely that people from these racial subgroups will be
+> #Forclosed on in the next two months which is FORCLOSE == Very Likely Forclosed in next 2 months.
+> NO_House <- Household_Pulse_data$FORCLOSE == "very likely forclosed in next 2 months"
+> summary(FORCLOSE)
+                                           NA        very likely forclosed in next 2 months 
+                                        67695                                            65 
+   somewhat likely forclosed in next 2 months    not very likely forclosed in next 2 months 
+                                          218                                           474 
+not at all forclosed evicted in next 2 months 
+                                          662 
+> #I have used the new No_House Variable as the dependent variable and compared the White, Black, and Asain 
+> #Subgroup to No_House to see if there is any Signaifcance and Difference
+> Regression_1 <- lm(NO_House ~ WhiteOUT + BlackOUT + AsainOUT)
+> summary(Regression_1)
+
+Call:
+lm(formula = NO_House ~ WhiteOUT + BlackOUT + AsainOUT)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.00166 -0.00088 -0.00088 -0.00088  0.99944 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   0.0012488  0.0005416   2.306   0.0211 *
+WhiteOUTTRUE -0.0003707  0.0005566  -0.666   0.5055  
+BlackOUTTRUE  0.0004141  0.0006833   0.606   0.5445  
+AsainOUTTRUE -0.0006872  0.0007465  -0.921   0.3573  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.03065 on 69110 degrees of freedom
+Multiple R-squared:  5.947e-05,	Adjusted R-squared:  1.606e-05 
+F-statistic:  1.37 on 3 and 69110 DF,  p-value: 0.2498
+
+> #  Once the data is reviewed we can make a determination on any Significance.
+> #  After looking at the determinations I have concluded that based on the P Values and those values being less than
+> #  the .01 level of Signigicance.
+> #  I must reject the Null Hypothesis in favor of the alternative hypothesis.  I found with 99% confidance
+> #  that the test was signigicant and we can also validate that using the signif.codes. This means that 
+> #  there is a difference between the subgroups and the sample.
+> library(car)
+> Anova(Regression_1)
+Anova Table (Type II tests)
+
+Response: NO_House
+          Sum Sq    Df F value Pr(>F)
+WhiteOUT   0.000     1  0.4435 0.5055
+BlackOUT   0.000     1  0.3673 0.5445
+AsainOUT   0.001     1  0.8475 0.3573
+Residuals 64.935 69110               
+> #  KNN
+> NOT_Work <- Household_Pulse_data$RSNNOWRKRV == "am/was sick w covid or caring for sick w covid"
+> summary(RSNNOWRKRV)
+                                            NA                                   did not want 
+                                         42659                                           1031 
+am/was sick w covid or caring for sick w covid                                caring for kids 
+                                           590                                           1329 
+                            caring for elderly                      concerned about spreading 
+                                           410                                            627 
+                              sick or disabled                                        retired 
+                                          1451                                          15024 
+                                      laid off                  employer closed because covid 
+                                          1164                                            355 
+        employer out of business because covid                                   no transport 
+                                           315                                            132 
+                                         other 
+                                          4027 
+> NOT_Work2 <- Household_Pulse_data$RSNNOWRKRV ==  "employer closed because covid"
+> NOT_Work3 <- Household_Pulse_data$RSNNOWRKRV == "no transport"
+> borough_f <- factor((NOT_Work + 2*NOT_Work2 + 3*NOT_Work3), levels=c(1,2,3),labels = c("COVID","Employer Closed","NO Transwork"))
+> norm_varb <- function(X_in) {
++   (X_in - min(X_in, na.rm = TRUE))/( max(X_in, na.rm = TRUE) - min(X_in, na.rm = TRUE) )
++ }
+> Norm_Covid <- norm_varb(Household_Pulse_data$HADCOVID == "yes doctor told had covid")
+> summary(HADCOVID)
+                       NA yes doctor told had covid                no did not                  not sure 
+                     1363                      9122                     58221                       408 
+> Norm_Covid1 <- norm_varb(Household_Pulse_data$INCOME == "HH income $50k - 74.9")
+> summary(INCOME)
+                      NA HH income less than $25k  HH income $25k - $34.9k    HH income $35k - 49.9    HH income $50k - 74.9 
+                   20335                     4600                     5805                     9330                     7830 
+    HH income $75 - 99.9    HH income $100k - 149     HH income $150 - 199        HH income $200k + 
+                   10117                     4980                     6117                        0 
+> Norm_Covid2 <- norm_varb(Household_Pulse_data$REGION == "Northeast")
+> summary(REGION)
+Northeast     South   Midwest      West 
+    10478     22680     13651     22305 
+> data_use_prelim <- data.frame(Norm_Covid, Norm_Covid1)
+> good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
+> dat_use <- subset(data_use_prelim,good_obs_data_use)
+> y_use <- subset(borough_f,good_obs_data_use)
+> set.seed(12345)
+> NN_obs <- sum(good_obs_data_use == 1)
+> select1 <- (runif(NN_obs) < 0.8)
+> train_data <- subset(dat_use,select1)
+> test_data <- subset(dat_use,(!select1))
+> cl_data <- y_use[select1]
+> true_data <- y_use[!select1]
+> summary(cl_data)
+          COVID Employer Closed    NO Transwork 
+            463             291             110 
+> prop.table(summary(cl_data))
+          COVID Employer Closed    NO Transwork 
+      0.5358796       0.3368056       0.1273148 
+> summary(train_data)
+   Norm_Covid      Norm_Covid1     
+ Min.   :0.0000   Min.   :0.00000  
+ 1st Qu.:0.0000   1st Qu.:0.00000  
+ Median :0.0000   Median :0.00000  
+ Mean   :0.4745   Mean   :0.07755  
+ 3rd Qu.:1.0000   3rd Qu.:0.00000  
+ Max.   :1.0000   Max.   :1.00000  
+> require(class)
+> for (indx in seq(1, 9, by= 2)) {
++   pred_borough <- knn(train_data, test_data, cl_data, k = indx, l = 0, prob = FALSE, use.all = TRUE)
++   num_correct_labels <- sum(pred_borough == true_data)
++   correct_rate <- num_correct_labels/length(true_data)
++   print(c(indx,correct_rate))
++ }
+[1] 1.0000000 0.7042254
+[1] 3.0000000 0.7042254
+[1] 5.0000000 0.7042254
+[1] 7.0000000 0.7042254
+[1] 9.0000000 0.7042254
+> ### Running with a 3rd Variable which would be Norm Covid2
+> data_use_prelim <- data.frame(Norm_Covid, Norm_Covid1, Norm_Covid2)
+> good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
+> dat_use <- subset(data_use_prelim,good_obs_data_use)
+> y_use <- subset(borough_f,good_obs_data_use)
+> set.seed(12345)
+> NN_obs <- sum(good_obs_data_use == 1)
+> select1 <- (runif(NN_obs) < 0.8)
+> train_data <- subset(dat_use,select1)
+> test_data <- subset(dat_use,(!select1))
+> cl_data <- y_use[select1]
+> true_data <- y_use[!select1]
+> summary(cl_data)
+          COVID Employer Closed    NO Transwork 
+            463             291             110 
+> prop.table(summary(cl_data))
+          COVID Employer Closed    NO Transwork 
+      0.5358796       0.3368056       0.1273148 
+> summary(train_data)
+   Norm_Covid      Norm_Covid1       Norm_Covid2    
+ Min.   :0.0000   Min.   :0.00000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.0000  
+ Median :0.0000   Median :0.00000   Median :0.0000  
+ Mean   :0.4745   Mean   :0.07755   Mean   :0.1192  
+ 3rd Qu.:1.0000   3rd Qu.:0.00000   3rd Qu.:0.0000  
+ Max.   :1.0000   Max.   :1.00000   Max.   :1.0000  
+> require(class)
+> for (indx in seq(1, 9, by= 2)) {
++   pred_borough <- knn(train_data, test_data, cl_data, k = indx, l = 0, prob = FALSE, use.all = TRUE)
++   num_correct_labels <- sum(pred_borough == true_data)
++   correct_rate <- num_correct_labels/length(true_data)
++   print(c(indx,correct_rate))
++ }
+[1] 1.0000000 0.7042254
+[1] 3.0000000 0.7042254
+[1] 5.0000000 0.7042254
+[1] 7.0000000 0.7042254
+[1] 9.0000000 0.7042254
+> 
